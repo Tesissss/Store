@@ -1,4 +1,4 @@
-let whatsappNumber
+let whatsappNumber = "522431268546"; // Valor por defecto
 let currentSlide = 0;
 let slidesPerView = 3;
 let isDragging = false;
@@ -21,9 +21,13 @@ async function fetchProductsAndMusic() {
         }
         
         const data = await response.json();
-        if (data.number) {
-        whatsappNumber = data.number
+        if (data.number && data.number.trim() !== "") {
+            whatsappNumber = data.number;
+            console.log("Número de WhatsApp cargado:", whatsappNumber);
+        } else {
+            console.log("Usando número de WhatsApp por defecto:", whatsappNumber);
         }
+        
         if (data.music && Array.isArray(data.music)) {
             musicUrls = data.music;
             if (musicUrls.length > 0) {
