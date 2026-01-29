@@ -34,6 +34,7 @@ app.get('/main/products', (req, res) => {
         const jsonData = JSON.parse(data);
         
         res.json({
+            number: jsonData.number,
             music: jsonData.music || [],
             products: jsonData.products || []
         });
