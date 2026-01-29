@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Scripts | Productos Premium</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="stars-container"></div>
+    
+    <div class="music-player" id="musicPlayer">
+        <div class="player-btn" id="togglePlayer">
+            <i class="fas fa-music"></i>
+        </div>
+        <div class="player-controls">
+            <button class="control-btn" id="prevBtnMusic">
+                <i class="fas fa-step-backward"></i>
+            </button>
+            <button class="control-btn" id="playPauseBtn">
+                <i class="fas fa-play"></i>
+            </button>
+            <button class="control-btn" id="nextBtnMusic">
+                <i class="fas fa-step-forward"></i>
+            </button>
+        </div>
+        <audio id="audioPlayer" loop></audio>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-code logo-icon"></i>
+                <h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
+            </div>
+            <p class="tagline">Scripts premium y herramientas de automatización para mejorar tu experiencia de juego.</p>
+            <div class="separator"></div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="products-section">
+            <h2 class="section-title"><i class="fas fa-box-open"></i> Productos Disponibles</h2>
+            
+            <div class="carousel-container">
+                <div class="carousel-wrapper" id="carouselWrapper">
+                    <div class="no-products" id="noProductsMessage">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h3>Sin productos actualmente</h3>
+                        <p>Estamos actualizando nuestro catálogo. Vuelve pronto.</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-nav" id="carouselNav">
+                    <button class="nav-btn" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="nav-dots" id="navDots">
+                    </div>
+                    
+                    <button class="nav-btn" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="procedure-section">
+            <h2 class="procedure-title"><i class="fas fa-shopping-cart"></i> Procedimiento de Compra</h2>
+            <div class="procedure-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Selecciona el Producto</h3>
+                    <p class="step-description">Elige el script o herramienta que necesitas.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Haz Clic en Comprar</h3>
+                    <p class="step-description">Presiona el botón "Comprar por WhatsApp".</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Sigue las Instrucciones</h3>
+                    <p class="step-description">Te contactaremos por WhatsApp para darte instrucciones.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="separator"></div>
+                <div class="footer-logo">
+                    <i class="fas fa-cube"></i>
+                    <span>Powered by FzTeis | 2026</span>
+                </div>
+                <p class="copyright">Tienda de scripts especializados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

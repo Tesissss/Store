@@ -1,0 +1,52 @@
+{
+    "number": "522431268546",
+    "music": [
+        "https://cdn.evogb.org/Tesis/OcR80-Jo_sean_Log_-_Chachach___Lyric_Video_.mp3",
+        "https://example.com/music2.mp3",
+        "https://example.com/music3.mp3"
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "AutoFarmer Pro",
+            "description": "Script de farming automático para recursos en el juego.",
+            "price": 24.99,
+            "imageUrl": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+        },
+        {
+            "id": 2,
+            "name": "Aimbot Precision",
+            "description": "Mejora tu puntería con este script de aim asistido.",
+            "price": 34.99,
+            "imageUrl": "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+        },
+        {
+            "id": 3,
+            "name": "ESP Visual Suite",
+            "description": "Sistema de visión completa con detección de enemigos.",
+            "price": 29.99,
+            "imageUrl": "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+        },
+        {
+            "id": 4,
+            "name": "Speed Hack Elite",
+            "description": "Aumenta tu velocidad de movimiento y ataque.",
+            "price": 19.99,
+            "imageUrl": "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+        },
+        {
+            "id": 5,
+            "name": "Resource Generator",
+            "description": "Genera automáticamente recursos ilimitados.",
+            "price": 39.99,
+            "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+        },
+        {
+            "id": 6,
+            "name": "Ultimate Bundle Pack",
+            "description": "Paquete completo con todos nuestros scripts premium.",
+            "price": 89.99,
+            "imageUrl": "https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+        }
+    ]
+}
