@@ -43,16 +43,16 @@
             100% { opacity: 0.6; letter-spacing: 2px; }
         }
 
-        /* --------- FOOTER ANIMADO CORRECTO --------- */
+        /* --------- FOOTER ANIMADO --------- */
         .footer-logo {
             position: relative;
             overflow: hidden;
             width: 100%;
-            height: 24px; /* ajusta si quieres más grande */
+            height: 24px;
         }
 
         .powered-green {
-            color: #00ff00; /* verde intenso */
+            color: #00ff00;
             text-shadow: 0 0 6px #00ff00;
             display: inline-block;
             white-space: nowrap;
@@ -63,6 +63,19 @@
         @keyframes slideLeft {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
+        }
+
+        /* 🔥 VIBRACIÓN SUAVE (AGREGADO) */
+        .vibrar {
+            animation: vibrarSoft 0.35s ease-in-out;
+        }
+
+        @keyframes vibrarSoft {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            50% { transform: translateX(2px); }
+            75% { transform: translateX(-1px); }
+            100% { transform: translateX(0); }
         }
     </style>
 </head>
@@ -181,7 +194,6 @@
                 <div class="separator"></div>
                 <div class="footer-logo">
                     <i class="fas fa-cube"></i>
-                    <!-- TEXTO VERDE ANIMADO CORRECTO -->
                     <span class="powered-green">Powered by Carlos | 2026</span>
                 </div>
                 <p class="copyright">
@@ -194,7 +206,25 @@
     <!-- TU SCRIPT ORIGINAL -->
     <script src="script.js"></script>
 
-    <!-- 🎵 SINCRONIZACIÓN AUDIO -->
+    <!-- 🔥 VIBRACIÓN AL SCROLL (AGREGADO) -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("vibrar");
+                    setTimeout(() => {
+                        entry.target.classList.remove("vibrar");
+                    }, 400);
+                }
+            });
+        }, { threshold: 0.6 });
+
+        document.querySelectorAll(
+            ".section-title, .procedure-title, .step, .carousel-container, .logo, .tagline"
+        ).forEach(el => observer.observe(el));
+    </script>
+
+    <!-- 🎵 AUDIO -->
     <script>
         const audio = document.getElementById("audioPlayer");
         const playBtn = document.getElementById("playPauseBtn");
