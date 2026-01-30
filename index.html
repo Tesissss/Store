@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- 🦠 CSS EMOJI SINCRONIZADO CON MUSICA (AGREGADO) -->
+    <!-- 🦠 CSS ANIMACION (AGREGADO, NO BORRA NADA) -->
     <style>
         .virus-animado {
             display: inline-block;
@@ -122,49 +122,68 @@
         </div>
     </footer>
 
-    <!-- TU SCRIPT ORIGINAL -->
+    <!-- TU SCRIPT ORIGINAL (NO TOCADO) -->
     <script src="script.js"></script>
 
-    <!-- 🦠 SINCRONIZACION CON MUSICA (AGREGADO) -->
+    <!-- 🦠 SINCRONIZACION CON MUSICA (ARREGLADA, ESTABLE) -->
     <script>
         const audio = document.getElementById("audioPlayer");
         const virusIcons = document.querySelectorAll(".virus-animado");
 
-        if (audio && virusIcons.length > 0) {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            const audioCtx = new AudioContext();
-            const source = audioCtx.createMediaElementSource(audio);
-            const analyser = audioCtx.createAnalyser();
+        let audioCtx = null;
+        let analyser = null;
+        let dataArray = null;
+        let connected = false;
 
+        function connectOnce() {
+            if (connected) return;
+            connected = true;
+
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 256;
+
+            const source = audioCtx.createMediaElementSource(audio);
             source.connect(analyser);
             analyser.connect(audioCtx.destination);
 
-            analyser.fftSize = 256;
-            const dataArray = new Uint8Array(analyser.frequencyBinCount);
+            dataArray = new Uint8Array(analyser.frequencyBinCount);
+            requestAnimationFrame(animateVirus);
+        }
 
-            function animateVirus() {
-                analyser.getByteFrequencyData(dataArray);
+        function animateVirus() {
+            if (!analyser) return;
 
-                let sum = 0;
-                for (let i = 0; i < dataArray.length; i++) {
-                    sum += dataArray[i];
-                }
+            analyser.getByteFrequencyData(dataArray);
 
-                const intensity = sum / dataArray.length / 60;
-
-                virusIcons.forEach(v => {
-                    v.style.transform = `scale(${1 + intensity}) rotate(${intensity * 6}deg)`;
-                    v.style.filter = `drop-shadow(0 0 ${8 + intensity * 18}px #00ff99)`;
-                });
-
-                requestAnimationFrame(animateVirus);
+            let energy = 0;
+            for (let i = 0; i < dataArray.length; i++) {
+                energy += dataArray[i];
             }
 
-            audio.addEventListener("play", () => {
-                audioCtx.resume();
-                animateVirus();
+            const intensity = energy / dataArray.length / 80;
+
+            virusIcons.forEach(v => {
+                v.style.transform = `scale(${1 + intensity})`;
+                v.style.filter = `drop-shadow(0 0 ${6 + intensity * 14}px #00ff99)`;
             });
+
+            requestAnimationFrame(animateVirus);
         }
+
+        audio.addEventListener("play", () => {
+            connectOnce();
+            if (audioCtx && audioCtx.state === "suspended") {
+                audioCtx.resume();
+            }
+        });
+
+        audio.addEventListener("pause", () => {
+            virusIcons.forEach(v => {
+                v.style.transform = "scale(1)";
+                v.style.filter = "drop-shadow(0 0 6px #00ff99)";
+            });
+        });
     </script>
 
 </body>
