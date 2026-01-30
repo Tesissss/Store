@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda de Scripts | Productos Premium</title>
+
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- 🦠 CSS EMOJI SINCRONIZADO CON MUSICA (AGREGADO) -->
+    <style>
+        .virus-animado {
+            display: inline-block;
+            transition: transform 0.08s ease, filter 0.08s ease;
+            filter: drop-shadow(0 0 6px #00ff99);
+        }
+    </style>
 </head>
+
 <body>
     <div id="stars-container"></div>
-    
+
     <div class="music-player" id="musicPlayer">
         <div class="player-btn" id="togglePlayer">
             <i class="fas fa-music"></i>
@@ -33,17 +44,24 @@
         <div class="container">
             <div class="logo">
                 <i class="fas fa-code logo-icon"></i>
-                <h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
+                <h1 class="rainbow-text">
+                    TIENDA DE SCRIPTS <span class="virus-animado">🦠</span>
+                </h1>
             </div>
-            <p class="tagline">Scripts premium y herramientas de automatización para mejorar tu experiencia de juego.</p>
+            <p class="tagline">
+                Scripts premium y herramientas de automatización 
+                <span class="virus-animado">🦠</span> para mejorar tu experiencia de juego.
+            </p>
             <div class="separator"></div>
         </div>
     </header>
 
     <main class="container">
         <section class="products-section">
-            <h2 class="section-title"><i class="fas fa-box-open"></i> Productos Disponibles</h2>
-            
+            <h2 class="section-title">
+                <i class="fas fa-box-open"></i> Productos Disponibles <span class="virus-animado">🦠</span>
+            </h2>
+
             <div class="carousel-container">
                 <div class="carousel-wrapper" id="carouselWrapper">
                     <div class="no-products" id="noProductsMessage">
@@ -52,15 +70,14 @@
                         <p>Estamos actualizando nuestro catálogo. Vuelve pronto.</p>
                     </div>
                 </div>
-                
+
                 <div class="carousel-nav" id="carouselNav">
                     <button class="nav-btn" id="prevBtn">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-                    
-                    <div class="nav-dots" id="navDots">
-                    </div>
-                    
+
+                    <div class="nav-dots" id="navDots"></div>
+
                     <button class="nav-btn" id="nextBtn">
                         <i class="fas fa-chevron-right"></i>
                     </button>
@@ -69,7 +86,9 @@
         </section>
 
         <section class="procedure-section">
-            <h2 class="procedure-title"><i class="fas fa-shopping-cart"></i> Procedimiento de Compra</h2>
+            <h2 class="procedure-title">
+                <i class="fas fa-shopping-cart"></i> Procedimiento de Compra
+            </h2>
             <div class="procedure-steps">
                 <div class="step">
                     <div class="step-number">1</div>
@@ -96,13 +115,57 @@
                 <div class="separator"></div>
                 <div class="footer-logo">
                     <i class="fas fa-cube"></i>
-                    <span>Powered by Carlos | 2026</span>
+                    <span>Powered by Carlos <span class="virus-animado">🦠</span> | 2026</span>
                 </div>
                 <p class="copyright">Tienda de scripts especializados.</p>
             </div>
         </div>
     </footer>
 
+    <!-- TU SCRIPT ORIGINAL -->
     <script src="script.js"></script>
+
+    <!-- 🦠 SINCRONIZACION CON MUSICA (AGREGADO) -->
+    <script>
+        const audio = document.getElementById("audioPlayer");
+        const virusIcons = document.querySelectorAll(".virus-animado");
+
+        if (audio && virusIcons.length > 0) {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            const audioCtx = new AudioContext();
+            const source = audioCtx.createMediaElementSource(audio);
+            const analyser = audioCtx.createAnalyser();
+
+            source.connect(analyser);
+            analyser.connect(audioCtx.destination);
+
+            analyser.fftSize = 256;
+            const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+            function animateVirus() {
+                analyser.getByteFrequencyData(dataArray);
+
+                let sum = 0;
+                for (let i = 0; i < dataArray.length; i++) {
+                    sum += dataArray[i];
+                }
+
+                const intensity = sum / dataArray.length / 60;
+
+                virusIcons.forEach(v => {
+                    v.style.transform = `scale(${1 + intensity}) rotate(${intensity * 6}deg)`;
+                    v.style.filter = `drop-shadow(0 0 ${8 + intensity * 18}px #00ff99)`;
+                });
+
+                requestAnimationFrame(animateVirus);
+            }
+
+            audio.addEventListener("play", () => {
+                audioCtx.resume();
+                animateVirus();
+            });
+        }
+    </script>
+
 </body>
 </html>
