@@ -43,13 +43,19 @@
             100% { opacity: 0.6; letter-spacing: 2px; }
         }
 
-        /* TEXTO VERDE PARA EL FOOTER */
+        /* --------- FOOTER ANIMADO --------- */
         .powered-green {
-    color: #00ff00;
-    text-shadow: 0 0 6px #00ff00;
-}
-            
-  
+            color: #00ff00; /* verde intenso */
+            text-shadow: 0 0 6px #00ff00;
+            display: inline-block;
+            position: relative;
+            animation: slideLeft 5s linear infinite;
+        }
+
+        @keyframes slideLeft {
+            0% { left: 100%; }   /* empieza fuera a la derecha */
+            100% { left: -100%; } /* termina fuera a la izquierda */
+        }
     </style>
 </head>
 
@@ -167,7 +173,7 @@
                 <div class="separator"></div>
                 <div class="footer-logo">
                     <i class="fas fa-cube"></i>
-                    <!-- TEXTO VERDE -->
+                    <!-- TEXTO VERDE ANIMADO -->
                     <span class="powered-green">Powered by Carlos | 2026</span>
                 </div>
                 <p class="copyright">
