@@ -20,7 +20,6 @@
             50% { transform: scale(1.3) rotate(5deg); }
             100% { transform: scale(1); }
         }
-
         .hacker-name {
             position: fixed;
             top: 60px;
@@ -39,7 +38,6 @@
             50% { opacity: 1; letter-spacing: 6px; }
             100% { opacity: 0.6; letter-spacing: 2px; }
         }
-
         /* --------- FOOTER ANIMADO CORRECTO --------- */
         .footer-logo {
             position: relative;
@@ -59,7 +57,6 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
-
         /* ---------------- LOGO FIJO ABAJO ---------------- */
         .fixed-logo {
             position: fixed;
@@ -77,23 +74,13 @@
             50% { transform: translateX(-50%) translateY(-10px); }
         }
 
-        /* --------- NUEVO BORDE CUADROS --------- */
-        .carousel-wrapper,
-        .procedure-steps .step {
-            border: 2px solid #6a0dad; /* 🍆 borde oscuro que combina con verde neón */
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-
-        /* --------- NEÓN SUAVE PARA PALABRAS --------- */
+        /* NEÓN SUAVE SOLO PARA PALABRAS ESPECÍFICAS */
         .neon-text {
-            color: #00cc00; /* verde neón más suave */
+            color: #00cc00; /* verde neón suave */
             text-shadow: 0 0 4px #00cc00, 0 0 8px #00cc00;
         }
     </style>
 </head>
-
 <body>
     <div id="stars-container"></div>
 
@@ -110,21 +97,17 @@
         <div class="player-btn" id="togglePlayer">
             <i class="fas fa-music"></i>
         </div>
-
         <div class="player-controls">
             <button class="control-btn" id="prevBtnMusic">
                 <i class="fas fa-step-backward"></i>
             </button>
-
             <button class="control-btn" id="playPauseBtn">
                 <i class="fas fa-play"></i>
             </button>
-
             <button class="control-btn" id="nextBtnMusic">
                 <i class="fas fa-step-forward"></i>
             </button>
         </div>
-
         <audio id="audioPlayer" loop>
             <source src="music.mp3" type="audio/mpeg">
         </audio>
@@ -134,9 +117,9 @@
         <div class="container">
             <div class="logo">
                 <i class="fas fa-code logo-icon"></i>
-                <h1 class="rainbow-text neon-text">TIENDA DE SCRIPTS</h1>
+                <h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
             </div>
-            <p class="tagline neon-text">
+            <p class="tagline">
                 Scripts premium y herramientas de automatización 🦠
             </p>
             <div class="separator"></div>
@@ -145,26 +128,23 @@
 
     <main class="container">
         <section class="products-section">
-            <h2 class="section-title neon-text">
-                <i class="fas fa-box-open"></i> Productos Disponibles
+            <h2 class="section-title">
+                <i class="fas fa-box-open"></i> 
+                <span class="neon-text">Productos Disponibles</span>
             </h2>
-
             <div class="carousel-container">
                 <div class="carousel-wrapper" id="carouselWrapper">
                     <div class="no-products" id="noProductsMessage">
                         <i class="fas fa-exclamation-circle"></i>
-                        <h3 class="neon-text">Sin productos actualmente</h3>
-                        <p class="neon-text">Estamos actualizando nuestro catálogo.</p>
+                        <h3>Sin productos actualmente</h3>
+                        <p>Estamos actualizando nuestro catálogo.</p>
                     </div>
                 </div>
-
                 <div class="carousel-nav" id="carouselNav">
                     <button class="nav-btn" id="prevBtn">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-
                     <div class="nav-dots" id="navDots"></div>
-
                     <button class="nav-btn" id="nextBtn">
                         <i class="fas fa-chevron-right"></i>
                     </button>
@@ -173,27 +153,25 @@
         </section>
 
         <section class="procedure-section">
-            <h2 class="procedure-title neon-text">
-                <i class="fas fa-shopping-cart"></i> Procedimiento de Compra
+            <h2 class="procedure-title">
+                <i class="fas fa-shopping-cart"></i> 
+                <span class="neon-text">Procedimiento de Compra</span>
             </h2>
-
             <div class="procedure-steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3 class="step-title neon-text">Selecciona el Producto</h3>
-                    <p class="step-description neon-text">Elige el script que necesitas.</p>
+                    <h3 class="step-title"><span class="neon-text">Selecciona el Producto</span></h3>
+                    <p class="step-description"><span class="neon-text">Elige el script que necesitas.</span></p>
                 </div>
-
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3 class="step-title neon-text">Haz clic en Comprar</h3>
-                    <p class="step-description neon-text">Compra por WhatsApp.</p>
+                    <h3 class="step-title"><span class="neon-text">Haz clic en Comprar</span></h3>
+                    <p class="step-description"><span class="neon-text">Compra por WhatsApp.</span></p>
                 </div>
-
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3 class="step-title neon-text">Confirmación</h3>
-                    <p class="step-description neon-text">Recibe instrucciones.</p>
+                    <h3 class="step-title"><span class="neon-text">Confirmación</span></h3>
+                    <p class="step-description"><span class="neon-text">Recibe instrucciones.</span></p>
                 </div>
             </div>
         </section>
@@ -246,45 +224,44 @@
 
     <!-- 🔹 VIBRACIÓN CLICK + TOUCH (SIN VIBRACIÓN VISUAL) -->
     <script>
-      function vibrar(ms = 100) {
-        if (navigator.vibrate) navigator.vibrate(ms);
-      }
+        function vibrar(ms = 100) {
+            if (navigator.vibrate) navigator.vibrate(ms);
+        }
 
-      // Botones de compra
-      const comprarBtns = document.querySelectorAll('.buy-btn');
-      comprarBtns.forEach(btn => {
-        btn.addEventListener('click', () => vibrar(150));
-        btn.addEventListener('touchstart', () => vibrar(150));
-      });
+        // Botones de compra
+        const comprarBtns = document.querySelectorAll('.buy-btn');
+        comprarBtns.forEach(btn => {
+            btn.addEventListener('click', () => vibrar(150));
+            btn.addEventListener('touchstart', () => vibrar(150));
+        });
 
-      // Carrusel: solo vibración real, visual eliminada
-      const carousel = document.getElementById('carouselWrapper');
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
+        // Carrusel: solo vibración real, visual eliminada
+        const carousel = document.getElementById('carouselWrapper');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        [prevBtn, nextBtn].forEach(btn => {
+            const vibrarCarrusel = () => vibrar(100);
+            btn.addEventListener('click', vibrarCarrusel);
+            btn.addEventListener('touchstart', vibrarCarrusel);
+        });
 
-      [prevBtn, nextBtn].forEach(btn => {
-        const vibrarCarrusel = () => vibrar(100);
-        btn.addEventListener('click', vibrarCarrusel);
-        btn.addEventListener('touchstart', vibrarCarrusel);
-      });
+        // Touch directamente sobre carrusel
+        carousel.addEventListener('touchstart', () => vibrar(100));
 
-      // Touch directamente sobre carrusel
-      carousel.addEventListener('touchstart', () => vibrar(100));
-
-      // 🔹 LOGO FIJO ABAJO - DESAPARECE AL CLIC Y VUELVE DESPUÉS DE 15 SEGUNDOS
-      const fixedLogo = document.getElementById('fixedLogo');
-      fixedLogo.addEventListener('click', () => {
-          fixedLogo.style.display = 'none';
-          setTimeout(() => {
-              fixedLogo.style.display = 'block';
-          }, 15000);
-      });
-      fixedLogo.addEventListener('touchstart', () => {
-          fixedLogo.style.display = 'none';
-          setTimeout(() => {
-              fixedLogo.style.display = 'block';
-          }, 15000);
-      });
+        // 🔹 LOGO FIJO ABAJO - DESAPARECE AL CLIC Y VUELVE DESPUÉS DE 15 SEGUNDOS
+        const fixedLogo = document.getElementById('fixedLogo');
+        fixedLogo.addEventListener('click', () => {
+            fixedLogo.style.display = 'none';
+            setTimeout(() => {
+                fixedLogo.style.display = 'block';
+            }, 15000);
+        });
+        fixedLogo.addEventListener('touchstart', () => {
+            fixedLogo.style.display = 'none';
+            setTimeout(() => {
+                fixedLogo.style.display = 'block';
+            }, 15000);
+        });
     </script>
 </body>
 </html>
