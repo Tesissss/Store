@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- 🦠 ESTILO DEL VIRUS -->
+    <!-- 🦠 ESTILOS HACKER -->
     <style>
         .virus-animado {
             display: inline-block;
@@ -18,9 +18,28 @@
         }
 
         @keyframes virusBeat {
-            0%   { transform: scale(1); }
-            50%  { transform: scale(1.3) rotate(5deg); }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3) rotate(5deg); }
             100% { transform: scale(1); }
+        }
+
+        .hacker-name {
+            position: fixed;
+            top: 60px;
+            right: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            color: #00ff99;
+            letter-spacing: 4px;
+            text-shadow: 0 0 8px #00ff99;
+            animation: none;
+            z-index: 9999;
+        }
+
+        @keyframes hackerGlow {
+            0% { opacity: 0.6; letter-spacing: 2px; }
+            50% { opacity: 1; letter-spacing: 6px; }
+            100% { opacity: 0.6; letter-spacing: 2px; }
         }
     </style>
 </head>
@@ -29,10 +48,13 @@
 
     <div id="stars-container"></div>
 
-    <!-- 🦠 VIRUS FIJO -->
+    <!-- 🦠 VIRUS -->
     <div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
         <span class="virus-animado">🦠</span>
     </div>
+
+    <!-- 💻 NOMBRE -->
+    <div class="hacker-name">CARLOS</div>
 
     <!-- 🎵 REPRODUCTOR -->
     <div class="music-player" id="musicPlayer">
@@ -54,7 +76,6 @@
             </button>
         </div>
 
-        <!-- ✅ AUDIO CON CANCIÓN -->
         <audio id="audioPlayer" loop>
             <source src="music.mp3" type="audio/mpeg">
         </audio>
@@ -149,27 +170,26 @@
     <!-- TU SCRIPT ORIGINAL -->
     <script src="script.js"></script>
 
-    <!-- ✅ SCRIPT QUE GARANTIZA AUDIO + ANIMACIÓN -->
+    <!-- 🎵 SINCRONIZACIÓN AUDIO -->
     <script>
         const audio = document.getElementById("audioPlayer");
         const playBtn = document.getElementById("playPauseBtn");
         const virus = document.querySelector(".virus-animado");
+        const hackerName = document.querySelector(".hacker-name");
 
         if (audio && playBtn) {
             playBtn.addEventListener("click", () => {
-                if (audio.paused) {
-                    audio.play();
-                } else {
-                    audio.pause();
-                }
+                audio.paused ? audio.play() : audio.pause();
             });
 
             audio.addEventListener("play", () => {
                 if (virus) virus.style.animation = "virusBeat 0.6s infinite";
+                if (hackerName) hackerName.style.animation = "hackerGlow 1s infinite";
             });
 
             audio.addEventListener("pause", () => {
                 if (virus) virus.style.animation = "none";
+                if (hackerName) hackerName.style.animation = "none";
             });
         }
     </script>
