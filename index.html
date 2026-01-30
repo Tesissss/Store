@@ -65,11 +65,6 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* ---------- OCULTAR TEXTO DEL HEADER ---------- */
-        header .logo h1.rainbow-text {
-            display: none; /* ocultamos "TIENDA DE SCRIPTS" del header */
-        }
-
         /* ---------- LOGO FLOTANTE ABAJO FIJO ---------- */
         .logo-bottom {
             position: fixed; /* queda fijo en pantalla */
@@ -79,9 +74,6 @@
             z-index: 9999;
             animation: floatLogoBottom 3s ease-in-out infinite;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .logo-bottom img {
@@ -89,14 +81,6 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 0 25px rgba(0,255,0,0.7);
-        }
-
-        .logo-bottom span {
-            margin-top: 8px;
-            font-size: 20px;
-            font-weight: bold;
-            color: #00ff00;
-            text-shadow: 0 0 6px #00ff00;
         }
 
         /* Movimiento suave arriba-abajo */
@@ -115,7 +99,6 @@
     <!-- 🔹 LOGO FLOTANTE ABAJO FIJO -->
     <div class="logo-bottom">
         <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Mi Logo">
-        <span>TIENDA DE SCRIPTS</span>
     </div>
 
     <!-- 🦠 VIRUS -->
@@ -155,6 +138,7 @@
         <div class="container">
             <div class="logo">
                 <i class="fas fa-code logo-icon"></i>
+                <!-- VOLVEMOS A MOSTRAR EL TEXTO -->
                 <h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
             </div>
             <p class="tagline">
