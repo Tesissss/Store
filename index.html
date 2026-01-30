@@ -65,6 +65,11 @@
             100% { transform: translateX(-100%); }
         }
 
+        /* ---------- OCULTAR TEXTO DEL HEADER ---------- */
+        header .logo h1.rainbow-text {
+            display: none; /* solo ocultamos, no eliminamos nada */
+        }
+
         /* ---------- LOGO + TEXTO ANIMADO ---------- */
         .logo-central {
             display: flex;
@@ -80,23 +85,24 @@
         }
 
         .logo-central img {
-            width: 120px; /* tamaño más grande */
+            width: 160px; /* más grande */
             height: auto;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,255,0,0.5);
+            box-shadow: 0 0 20px rgba(0,255,0,0.6);
         }
 
         .logo-central h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: 32px;
+            font-size: 36px; /* más grande */
             color: #00ff00;
-            text-shadow: 0 0 8px #00ff00;
+            text-shadow: 0 0 10px #00ff00;
             margin: 0;
         }
 
+        /* Movimiento suave arriba-abajo */
         @keyframes floatLogo {
             0% { transform: translateX(-50%) translateY(0px); }
-            50% { transform: translateX(-50%) translateY(-10px); }
+            50% { transform: translateX(-50%) translateY(-15px); }
             100% { transform: translateX(-50%) translateY(0px); }
         }
     </style>
@@ -106,6 +112,12 @@
 
     <div id="stars-container"></div>
 
+    <!-- 🔹 LOGO + TEXTO CENTRAL ANIMADO -->
+    <div class="logo-central">
+        <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Mi Logo">
+        <h1>TIENDA DE SCRIPTS</h1>
+    </div>
+
     <!-- 🦠 VIRUS -->
     <div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
         <span class="virus-animado">🦠</span>
@@ -113,12 +125,6 @@
 
     <!-- 💻 NOMBRE -->
     <div class="hacker-name">🦄드림가 Carlos</div>
-
-    <!-- 🔹 LOGO + TEXTO CENTRAL ANIMADO -->
-    <div class="logo-central">
-        <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Mi Logo">
-        <h1>TIENDA DE SCRIPTS</h1>
-    </div>
 
     <!-- 🎵 REPRODUCTOR -->
     <div class="music-player" id="musicPlayer">
@@ -222,6 +228,7 @@
                 <div class="separator"></div>
                 <div class="footer-logo">
                     <i class="fas fa-cube"></i>
+                    <!-- TEXTO VERDE ANIMADO CORRECTO -->
                     <span class="powered-green">Powered by Carlos | 2026</span>
                 </div>
                 <p class="copyright">
@@ -256,34 +263,6 @@
                 if (hackerName) hackerName.style.animation = "none";
             });
         }
-    </script>
-
-    <!-- 🔹 VIBRACIÓN CLICK + TOUCH (SIN VIBRACIÓN VISUAL) -->
-    <script>
-      function vibrar(ms = 100) {
-        if (navigator.vibrate) navigator.vibrate(ms);
-      }
-
-      // Botones de compra
-      const comprarBtns = document.querySelectorAll('.buy-btn');
-      comprarBtns.forEach(btn => {
-        btn.addEventListener('click', () => vibrar(150));
-        btn.addEventListener('touchstart', () => vibrar(150));
-      });
-
-      // Carrusel: solo vibración real
-      const carousel = document.getElementById('carouselWrapper');
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
-
-      [prevBtn, nextBtn].forEach(btn => {
-        const vibrarCarrusel = () => vibrar(100);
-        btn.addEventListener('click', vibrarCarrusel);
-        btn.addEventListener('touchstart', vibrarCarrusel);
-      });
-
-      // Touch directamente sobre carrusel
-      carousel.addEventListener('touchstart', () => vibrar(100));
     </script>
 
 </body>
