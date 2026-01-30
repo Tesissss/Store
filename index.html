@@ -68,19 +68,28 @@
         /* ---------------- LOGO FIJO ABAJO ---------------- */
         .fixed-logo {
             position: fixed;
-            bottom: 20px; /* distancia desde el pie de la pantalla */
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 150px; /* tamaño del logo */
+            width: 140px; /* tamaño ajustado */
             height: auto;
             z-index: 9999;
             animation: floatUpDown 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 12px #00ff00); /* neón verde */
         }
 
         @keyframes floatUpDown {
             0%, 100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* ---------------- NEÓN VERDE ---------------- */
+        .neon-green {
+            color: #00ff00;
+            text-shadow:
+                0 0 5px #00ff00,
+                0 0 10px #00ff00,
+                0 0 20px #00ff00,
+                0 0 40px #00ff00;
         }
     </style>
 </head>
@@ -138,7 +147,7 @@
     <main class="container">
 
         <section class="products-section">
-            <h2 class="section-title">
+            <h2 class="section-title neon-green">
                 <i class="fas fa-box-open"></i> Productos Disponibles
             </h2>
 
@@ -146,7 +155,7 @@
                 <div class="carousel-wrapper" id="carouselWrapper">
                     <div class="no-products" id="noProductsMessage">
                         <i class="fas fa-exclamation-circle"></i>
-                        <h3>Sin productos actualmente</h3>
+                        <h3 class="neon-green">Sin productos actualmente</h3>
                         <p>Estamos actualizando nuestro catálogo.</p>
                     </div>
                 </div>
@@ -166,26 +175,26 @@
         </section>
 
         <section class="procedure-section">
-            <h2 class="procedure-title">
+            <h2 class="procedure-title neon-green">
                 <i class="fas fa-shopping-cart"></i> Procedimiento de Compra
             </h2>
 
             <div class="procedure-steps">
                 <div class="step">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Selecciona el Producto</h3>
+                    <div class="step-number neon-green">1</div>
+                    <h3 class="step-title neon-green">Selecciona el Producto</h3>
                     <p class="step-description">Elige el script que necesitas.</p>
                 </div>
 
                 <div class="step">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">Haz clic en Comprar</h3>
+                    <div class="step-number neon-green">2</div>
+                    <h3 class="step-title neon-green">Haz clic en Comprar</h3>
                     <p class="step-description">Compra por WhatsApp.</p>
                 </div>
 
                 <div class="step">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Confirmación</h3>
+                    <div class="step-number neon-green">3</div>
+                    <h3 class="step-title neon-green">Confirmación</h3>
                     <p class="step-description">Recibe instrucciones.</p>
                 </div>
             </div>
@@ -199,7 +208,6 @@
                 <div class="separator"></div>
                 <div class="footer-logo">
                     <i class="fas fa-cube"></i>
-                    <!-- TEXTO VERDE ANIMADO CORRECTO -->
                     <span class="powered-green">Powered by Carlos | 2026</span>
                 </div>
                 <p class="copyright">
@@ -210,7 +218,7 @@
     </footer>
 
     <!-- LOGO FIJO ABAJO -->
-    <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Logo" class="fixed-logo" id="fixedLogo">
+    <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Logo" class="fixed-logo">
 
     <!-- TU SCRIPT ORIGINAL -->
     <script src="script.js"></script>
@@ -245,14 +253,12 @@
         if (navigator.vibrate) navigator.vibrate(ms);
       }
 
-      // Botones de compra
       const comprarBtns = document.querySelectorAll('.buy-btn');
       comprarBtns.forEach(btn => {
         btn.addEventListener('click', () => vibrar(150));
         btn.addEventListener('touchstart', () => vibrar(150));
       });
 
-      // Carrusel: solo vibración real, visual eliminada
       const carousel = document.getElementById('carouselWrapper');
       const prevBtn = document.getElementById('prevBtn');
       const nextBtn = document.getElementById('nextBtn');
@@ -263,23 +269,7 @@
         btn.addEventListener('touchstart', vibrarCarrusel);
       });
 
-      // Touch directamente sobre carrusel
       carousel.addEventListener('touchstart', () => vibrar(100));
-
-      // 🔹 LOGO FIJO ABAJO - DESAPARECE AL CLIC Y VUELVE DESPUÉS DE 15 SEGUNDOS
-      const fixedLogo = document.getElementById('fixedLogo');
-      fixedLogo.addEventListener('click', () => {
-          fixedLogo.style.display = 'none';
-          setTimeout(() => {
-              fixedLogo.style.display = 'block';
-          }, 15000); // 15000 ms = 15 segundos
-      });
-      fixedLogo.addEventListener('touchstart', () => {
-          fixedLogo.style.display = 'none';
-          setTimeout(() => {
-              fixedLogo.style.display = 'block';
-          }, 15000);
-      });
     </script>
 
 </body>
