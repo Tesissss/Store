@@ -65,29 +65,21 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* ---------- LOGO FLOTANTE ABAJO FIJO ---------- */
-        .logo-bottom {
-            position: fixed; /* queda fijo en pantalla */
-            bottom: 20px; /* distancia desde abajo */
+        /* ---------------- LOGO FIJO ABAJO ---------------- */
+        .fixed-logo {
+            position: fixed;
+            bottom: 20px; /* distancia desde el pie de la pantalla */
             left: 50%;
             transform: translateX(-50%);
-            z-index: 9999;
-            animation: floatLogoBottom 3s ease-in-out infinite;
-            text-align: center;
-        }
-
-        .logo-bottom img {
-            width: 180px; /* tamaño más grande del logo */
+            width: 120px; /* tamaño del logo */
             height: auto;
-            border-radius: 10px;
-            box-shadow: 0 0 25px rgba(0,255,0,0.7);
+            z-index: 9999;
+            animation: floatUpDown 3s ease-in-out infinite;
         }
 
-        /* Movimiento suave arriba-abajo */
-        @keyframes floatLogoBottom {
-            0% { transform: translateX(-50%) translateY(0px); }
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(-10px); }
-            100% { transform: translateX(-50%) translateY(0px); }
         }
     </style>
 </head>
@@ -95,11 +87,6 @@
 <body>
 
     <div id="stars-container"></div>
-
-    <!-- 🔹 LOGO FLOTANTE ABAJO FIJO -->
-    <div class="logo-bottom">
-        <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Mi Logo">
-    </div>
 
     <!-- 🦠 VIRUS -->
     <div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
@@ -138,7 +125,6 @@
         <div class="container">
             <div class="logo">
                 <i class="fas fa-code logo-icon"></i>
-                <!-- VOLVEMOS A MOSTRAR EL TEXTO -->
                 <h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
             </div>
             <p class="tagline">
@@ -222,6 +208,9 @@
         </div>
     </footer>
 
+    <!-- LOGO FIJO ABAJO -->
+    <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Logo" class="fixed-logo">
+
     <!-- TU SCRIPT ORIGINAL -->
     <script src="script.js"></script>
 
@@ -247,6 +236,34 @@
                 if (hackerName) hackerName.style.animation = "none";
             });
         }
+    </script>
+
+    <!-- 🔹 VIBRACIÓN CLICK + TOUCH (SIN VIBRACIÓN VISUAL) -->
+    <script>
+      function vibrar(ms = 100) {
+        if (navigator.vibrate) navigator.vibrate(ms);
+      }
+
+      // Botones de compra
+      const comprarBtns = document.querySelectorAll('.buy-btn');
+      comprarBtns.forEach(btn => {
+        btn.addEventListener('click', () => vibrar(150));
+        btn.addEventListener('touchstart', () => vibrar(150));
+      });
+
+      // Carrusel: solo vibración real, visual eliminada
+      const carousel = document.getElementById('carouselWrapper');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      [prevBtn, nextBtn].forEach(btn => {
+        const vibrarCarrusel = () => vibrar(100);
+        btn.addEventListener('click', vibrarCarrusel);
+        btn.addEventListener('touchstart', vibrarCarrusel);
+      });
+
+      // Touch directamente sobre carrusel
+      carousel.addEventListener('touchstart', () => vibrar(100));
     </script>
 
 </body>
