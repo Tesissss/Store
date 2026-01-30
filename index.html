@@ -64,6 +64,21 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
+
+        /* ---------- LOGO ANIMADO ---------- */
+        .logo-animado {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            animation: floatLogo 3s ease-in-out infinite;
+        }
+
+        @keyframes floatLogo {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
     </style>
 </head>
 
@@ -78,6 +93,11 @@
 
     <!-- 💻 NOMBRE -->
     <div class="hacker-name">🦄드림가 Carlos</div>
+
+    <!-- 🔹 LOGO ANIMADO -->
+    <div class="logo-animado">
+        <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Mi Logo" width="80">
+    </div>
 
     <!-- 🎵 REPRODUCTOR -->
     <div class="music-player" id="musicPlayer">
@@ -181,7 +201,6 @@
                 <div class="separator"></div>
                 <div class="footer-logo">
                     <i class="fas fa-cube"></i>
-                    <!-- TEXTO VERDE ANIMADO CORRECTO -->
                     <span class="powered-green">Powered by Carlos | 2026</span>
                 </div>
                 <p class="copyright">
