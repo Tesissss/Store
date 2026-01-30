@@ -70,39 +70,27 @@
             display: none; /* solo ocultamos, no eliminamos nada */
         }
 
-        /* ---------- LOGO + TEXTO ANIMADO ---------- */
-        .logo-central {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: fixed;
-            top: 20px;
+        /* ---------- LOGO FLOTANTE ABAJO FIJO ---------- */
+        .logo-bottom {
+            position: fixed; /* queda fijo en pantalla */
+            bottom: 20px; /* distancia desde abajo */
             left: 50%;
             transform: translateX(-50%);
             z-index: 9999;
-            animation: floatLogo 3s ease-in-out infinite;
-            gap: 15px; /* espacio entre logo y texto */
+            animation: floatLogoBottom 3s ease-in-out infinite;
         }
 
-        .logo-central img {
-            width: 160px; /* más grande */
+        .logo-bottom img {
+            width: 140px; /* tamaño más grande del logo */
             height: auto;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,255,0,0.6);
-        }
-
-        .logo-central h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 36px; /* más grande */
-            color: #00ff00;
-            text-shadow: 0 0 10px #00ff00;
-            margin: 0;
+            box-shadow: 0 0 25px rgba(0,255,0,0.7);
         }
 
         /* Movimiento suave arriba-abajo */
-        @keyframes floatLogo {
+        @keyframes floatLogoBottom {
             0% { transform: translateX(-50%) translateY(0px); }
-            50% { transform: translateX(-50%) translateY(-15px); }
+            50% { transform: translateX(-50%) translateY(-10px); }
             100% { transform: translateX(-50%) translateY(0px); }
         }
     </style>
@@ -112,10 +100,9 @@
 
     <div id="stars-container"></div>
 
-    <!-- 🔹 LOGO + TEXTO CENTRAL ANIMADO -->
-    <div class="logo-central">
+    <!-- 🔹 LOGO FLOTANTE ABAJO FIJO -->
+    <div class="logo-bottom">
         <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Mi Logo">
-        <h1>TIENDA DE SCRIPTS</h1>
     </div>
 
     <!-- 🦠 VIRUS -->
