@@ -79,6 +79,20 @@
             color: #00cc00; /* verde neón suave */
             text-shadow: 0 0 4px #00cc00, 0 0 8px #00cc00;
         }
+
+        /* 🍆 COLOR PARA TODOS LOS CUADROS DE TEXTO Y PRODUCTOS */
+        .step, 
+        .no-products, 
+        .carousel-wrapper > div {
+            background-color: #800080; /* color púrpura 🍆 */
+            border-radius: 12px;
+            padding: 12px;
+            color: #fff; /* texto blanco sobre púrpura */
+        }
+
+        .carousel-wrapper > div {
+            margin: 8px;
+        }
     </style>
 </head>
 <body>
@@ -138,6 +152,15 @@
                         <i class="fas fa-exclamation-circle"></i>
                         <h3>Sin productos actualmente</h3>
                         <p>Estamos actualizando nuestro catálogo.</p>
+                    </div>
+                    <!-- Ejemplo de producto -->
+                    <div class="product-item">
+                        <h3>Script Automático 1</h3>
+                        <p>Descripción breve del script.</p>
+                    </div>
+                    <div class="product-item">
+                        <h3>Script Automático 2</h3>
+                        <p>Descripción breve del script.</p>
                     </div>
                 </div>
                 <div class="carousel-nav" id="carouselNav">
@@ -222,20 +245,18 @@
         }
     </script>
 
-    <!-- 🔹 VIBRACIÓN CLICK + TOUCH (SIN VIBRACIÓN VISUAL) -->
+    <!-- 🔹 VIBRACIÓN CLICK + TOUCH -->
     <script>
         function vibrar(ms = 100) {
             if (navigator.vibrate) navigator.vibrate(ms);
         }
 
-        // Botones de compra
         const comprarBtns = document.querySelectorAll('.buy-btn');
         comprarBtns.forEach(btn => {
             btn.addEventListener('click', () => vibrar(150));
             btn.addEventListener('touchstart', () => vibrar(150));
         });
 
-        // Carrusel: solo vibración real, visual eliminada
         const carousel = document.getElementById('carouselWrapper');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
@@ -245,10 +266,8 @@
             btn.addEventListener('touchstart', vibrarCarrusel);
         });
 
-        // Touch directamente sobre carrusel
         carousel.addEventListener('touchstart', () => vibrar(100));
 
-        // 🔹 LOGO FIJO ABAJO - DESAPARECE AL CLIC Y VUELVE DESPUÉS DE 15 SEGUNDOS
         const fixedLogo = document.getElementById('fixedLogo');
         fixedLogo.addEventListener('click', () => {
             fixedLogo.style.display = 'none';
