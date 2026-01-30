@@ -65,7 +65,7 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* 🔥 VIBRACIÓN SUAVE (AGREGADO) */
+        /* 🔥 VIBRACIÓN VISUAL SUAVE */
         .vibrar {
             animation: vibrarSoft 0.35s ease-in-out;
         }
@@ -206,7 +206,7 @@
     <!-- TU SCRIPT ORIGINAL -->
     <script src="script.js"></script>
 
-    <!-- 🔥 VIBRACIÓN AL SCROLL (AGREGADO) -->
+    <!-- 🔥 VIBRACIÓN VISUAL AL SCROLL -->
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -224,10 +224,34 @@
         ).forEach(el => observer.observe(el));
     </script>
 
+    <!-- 📱 VIBRACIÓN REAL CELULAR -->
+    <script>
+        function vibrarMovil(ms = 80) {
+            if (navigator.vibrate) {
+                navigator.vibrate(ms);
+            }
+        }
+
+        // Vibrar al tocar botones del carrusel
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => vibrarMovil(80));
+        });
+
+        // Vibrar al tocar pasos
+        document.querySelectorAll('.step').forEach(step => {
+            step.addEventListener('click', () => vibrarMovil(60));
+        });
+
+        // Vibrar al tocar el reproductor
+        const playBtn = document.getElementById('playPauseBtn');
+        if (playBtn) {
+            playBtn.addEventListener('click', () => vibrarMovil(120));
+        }
+    </script>
+
     <!-- 🎵 AUDIO -->
     <script>
         const audio = document.getElementById("audioPlayer");
-        const playBtn = document.getElementById("playPauseBtn");
         const virus = document.querySelector(".virus-animado");
         const hackerName = document.querySelector(".hacker-name");
 
