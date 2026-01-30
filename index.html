@@ -64,19 +64,6 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
-
-        /* Vibración visual */
-        .vibrar {
-            animation: vibrarAnim 0.15s infinite;
-        }
-
-        @keyframes vibrarAnim {
-            0% { transform: translateX(0px); }
-            25% { transform: translateX(-3px); }
-            50% { transform: translateX(3px); }
-            75% { transform: translateX(-2px); }
-            100% { transform: translateX(2px); }
-        }
     </style>
 </head>
 
@@ -231,7 +218,7 @@
         }
     </script>
 
-    <!-- 🔹 VIBRACIÓN CLICK + TOUCH -->
+    <!-- 🔹 VIBRACIÓN CLICK + TOUCH (SIN VIBRACIÓN VISUAL) -->
     <script>
       function vibrar(ms = 100) {
         if (navigator.vibrate) navigator.vibrate(ms);
@@ -240,9 +227,7 @@
       // Botones de compra
       const comprarBtns = document.querySelectorAll('.buy-btn');
       comprarBtns.forEach(btn => {
-        // Click vibración
         btn.addEventListener('click', () => vibrar(150));
-        // Touch vibración
         btn.addEventListener('touchstart', () => vibrar(150));
       });
 
@@ -252,23 +237,13 @@
       const nextBtn = document.getElementById('nextBtn');
 
       [prevBtn, nextBtn].forEach(btn => {
-        const vibrarCarrusel = () => {
-          vibrar(100);
-          carousel.classList.add('vibrar');
-          setTimeout(() => carousel.classList.remove('vibrar'), 200);
-        };
-        // Click
+        const vibrarCarrusel = () => vibrar(100);
         btn.addEventListener('click', vibrarCarrusel);
-        // Touch
         btn.addEventListener('touchstart', vibrarCarrusel);
       });
 
       // Touch directamente sobre carrusel
-      carousel.addEventListener('touchstart', () => {
-        vibrar(100);
-        carousel.classList.add('vibrar');
-        setTimeout(() => carousel.classList.remove('vibrar'), 200);
-      });
+      carousel.addEventListener('touchstart', () => vibrar(100));
     </script>
 
 </body>
