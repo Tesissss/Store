@@ -9,13 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- 🦠 ESTILO ANIMADO (NO ROMPE NADA) -->
+    <!-- 🦠 ESTILO DEL VIRUS -->
     <style>
         .virus-animado {
             display: inline-block;
             animation: none;
             filter: drop-shadow(0 0 6px #00ff99);
-            transition: transform 0.2s;
         }
 
         @keyframes virusBeat {
@@ -30,12 +29,12 @@
 
     <div id="stars-container"></div>
 
-    <!-- 🦠 ICONO -->
+    <!-- 🦠 VIRUS FIJO -->
     <div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
         <span class="virus-animado">🦠</span>
     </div>
 
-    <!-- 🎵 REPRODUCTOR (NO TOCADO) -->
+    <!-- 🎵 REPRODUCTOR -->
     <div class="music-player" id="musicPlayer">
         <div class="player-btn" id="togglePlayer">
             <i class="fas fa-music"></i>
@@ -55,7 +54,10 @@
             </button>
         </div>
 
-        <audio id="audioPlayer" loop></audio>
+        <!-- ✅ AUDIO CON CANCIÓN -->
+        <audio id="audioPlayer" loop>
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
     </div>
 
     <header>
@@ -115,7 +117,7 @@
 
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3 class="step-title">Haz Clic en Comprar</h3>
+                    <h3 class="step-title">Haz clic en Comprar</h3>
                     <p class="step-description">Compra por WhatsApp.</p>
                 </div>
 
@@ -147,19 +149,27 @@
     <!-- TU SCRIPT ORIGINAL -->
     <script src="script.js"></script>
 
-    <!-- 🦠 SINCRONIZACIÓN SEGURA CON MÚSICA -->
+    <!-- ✅ SCRIPT QUE GARANTIZA AUDIO + ANIMACIÓN -->
     <script>
         const audio = document.getElementById("audioPlayer");
+        const playBtn = document.getElementById("playPauseBtn");
         const virus = document.querySelector(".virus-animado");
 
-        if (audio && virus) {
+        if (audio && playBtn) {
+            playBtn.addEventListener("click", () => {
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+            });
+
             audio.addEventListener("play", () => {
-                virus.style.animation = "virusBeat 0.6s infinite";
+                if (virus) virus.style.animation = "virusBeat 0.6s infinite";
             });
 
             audio.addEventListener("pause", () => {
-                virus.style.animation = "none";
-                virus.style.transform = "scale(1)";
+                if (virus) virus.style.animation = "none";
             });
         }
     </script>
