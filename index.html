@@ -65,19 +65,39 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* ---------- LOGO ANIMADO ---------- */
-        .logo-animado {
+        /* ---------- LOGO + TEXTO ANIMADO ---------- */
+        .logo-central {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: fixed;
             top: 20px;
-            left: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 9999;
             animation: floatLogo 3s ease-in-out infinite;
+            gap: 15px; /* espacio entre logo y texto */
+        }
+
+        .logo-central img {
+            width: 120px; /* tamaño más grande */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,255,0,0.5);
+        }
+
+        .logo-central h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            color: #00ff00;
+            text-shadow: 0 0 8px #00ff00;
+            margin: 0;
         }
 
         @keyframes floatLogo {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% { transform: translateX(-50%) translateY(0px); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+            100% { transform: translateX(-50%) translateY(0px); }
         }
     </style>
 </head>
@@ -94,9 +114,10 @@
     <!-- 💻 NOMBRE -->
     <div class="hacker-name">🦄드림가 Carlos</div>
 
-    <!-- 🔹 LOGO ANIMADO -->
-    <div class="logo-animado">
-        <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Mi Logo" width="80">
+    <!-- 🔹 LOGO + TEXTO CENTRAL ANIMADO -->
+    <div class="logo-central">
+        <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Mi Logo">
+        <h1>TIENDA DE SCRIPTS</h1>
     </div>
 
     <!-- 🎵 REPRODUCTOR -->
