@@ -43,16 +43,16 @@
             100% { opacity: 0.6; letter-spacing: 2px; }
         }
 
-        /* --------- FOOTER ANIMADO --------- */
+        /* --------- FOOTER ANIMADO CORRECTO --------- */
         .footer-logo {
             position: relative;
             overflow: hidden;
             width: 100%;
-            height: 24px;
+            height: 24px; /* ajusta si quieres más grande */
         }
 
         .powered-green {
-            color: #00ff00;
+            color: #00ff00; /* verde intenso */
             text-shadow: 0 0 6px #00ff00;
             display: inline-block;
             white-space: nowrap;
@@ -65,17 +65,17 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* 🔥 VIBRACIÓN VISUAL SUAVE */
+        /* Vibración visual */
         .vibrar {
-            animation: vibrarSoft 0.35s ease-in-out;
+            animation: vibrarAnim 0.15s infinite;
         }
 
-        @keyframes vibrarSoft {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-2px); }
-            50% { transform: translateX(2px); }
-            75% { transform: translateX(-1px); }
-            100% { transform: translateX(0); }
+        @keyframes vibrarAnim {
+            0% { transform: translateX(0px); }
+            25% { transform: translateX(-3px); }
+            50% { transform: translateX(3px); }
+            75% { transform: translateX(-2px); }
+            100% { transform: translateX(2px); }
         }
     </style>
 </head>
@@ -194,6 +194,7 @@
                 <div class="separator"></div>
                 <div class="footer-logo">
                     <i class="fas fa-cube"></i>
+                    <!-- TEXTO VERDE ANIMADO CORRECTO -->
                     <span class="powered-green">Powered by Carlos | 2026</span>
                 </div>
                 <p class="copyright">
@@ -206,58 +207,12 @@
     <!-- TU SCRIPT ORIGINAL -->
     <script src="script.js"></script>
 
-    <!-- 🔥 VIBRACIÓN VISUAL AL SCROLL -->
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("vibrar");
-                    setTimeout(() => {
-                        entry.target.classList.remove("vibrar");
-                    }, 400);
-                }
-            });
-        }, { threshold: 0.6 });
-
-        document.querySelectorAll(
-            ".section-title, .procedure-title, .step, .carousel-container, .logo, .tagline"
-        ).forEach(el => observer.observe(el));
-    </script>
-
-    <!-- 📱 VIBRACIÓN REAL AL MOVER CARRUSEL -->
-    <script>
-        function vibrar(ms = 80) {
-            if (navigator.vibrate) navigator.vibrate(ms);
-        }
-
-        function vibrarVisual(element, duration = 200) {
-            element.classList.add('vibrar');
-            setTimeout(() => element.classList.remove('vibrar'), duration);
-        }
-
-        const carouselWrapper = document.getElementById('carouselWrapper');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        [prevBtn, nextBtn].forEach(btn => {
-            btn.addEventListener('click', () => {
-                vibrar(100);           // Android vibra
-                vibrarVisual(carouselWrapper, 300); // visual para todos
-            });
-        });
-
-        // Opcional: vibración visual al hacer scroll en el carrusel
-        carouselWrapper.addEventListener('scroll', () => {
-            vibrarVisual(carouselWrapper, 150);
-        });
-    </script>
-
-    <!-- 🎵 AUDIO -->
+    <!-- 🎵 SINCRONIZACIÓN AUDIO -->
     <script>
         const audio = document.getElementById("audioPlayer");
+        const playBtn = document.getElementById("playPauseBtn");
         const virus = document.querySelector(".virus-animado");
         const hackerName = document.querySelector(".hacker-name");
-        const playBtn = document.getElementById("playPauseBtn");
 
         if (audio && playBtn) {
             playBtn.addEventListener("click", () => {
@@ -274,6 +229,64 @@
                 if (hackerName) hackerName.style.animation = "none";
             });
         }
+    </script>
+
+    <!-- 🔹 VIBRACIÓN FÍSICA Y VISUAL -->
+    <script>
+      // Vibración Android
+      function vibrar(ms = 100) {
+        if(navigator.vibrate) navigator.vibrate(ms);
+      }
+
+      // Botones de compra (reemplaza .buy-btn con la clase correcta)
+      const comprarBtns = document.querySelectorAll('.buy-btn');
+      comprarBtns.forEach(btn => {
+        btn.addEventListener('click', e => {
+          vibrar(150);
+          const href = btn.getAttribute('href');
+          if(href){
+            e.preventDefault();
+            setTimeout(() => window.open(href, '_blank'), 100);
+          }
+        });
+        btn.addEventListener('touchstart', () => vibrar(150));
+      });
+
+      // Carrusel
+      const carousel = document.getElementById('carouselWrapper');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      [prevBtn, nextBtn].forEach(btn => {
+        btn.addEventListener('click', () => {
+          vibrar(100);
+          carousel.classList.add('vibrar');
+          setTimeout(() => carousel.classList.remove('vibrar'), 200);
+        });
+        btn.addEventListener('touchstart', () => vibrar(100));
+      });
+
+      // Arrastrar carrusel → vibración visual
+      let isDragging = false;
+      carousel.addEventListener('mousedown', () => isDragging = true);
+      carousel.addEventListener('mouseup', () => isDragging = false);
+      carousel.addEventListener('mouseleave', () => isDragging = false);
+      carousel.addEventListener('touchstart', () => isDragging = true);
+      carousel.addEventListener('touchend', () => isDragging = false);
+
+      carousel.addEventListener('mousemove', () => {
+        if(isDragging){
+          carousel.classList.add('vibrar');
+          setTimeout(() => carousel.classList.remove('vibrar'), 150);
+        }
+      });
+
+      carousel.addEventListener('touchmove', () => {
+        if(isDragging){
+          carousel.classList.add('vibrar');
+          setTimeout(() => carousel.classList.remove('vibrar'), 150);
+        }
+      });
     </script>
 
 </body>
