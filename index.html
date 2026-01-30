@@ -71,15 +71,23 @@
             bottom: 20px; /* distancia desde el pie de la pantalla */
             left: 50%;
             transform: translateX(-50%);
-            width: 80px; /* más pequeño */
+            width: 120px; /* tamaño del logo */
             height: auto;
             z-index: 9999;
             animation: floatUpDown 3s ease-in-out infinite;
+
+            /* NEON VERDE */
+            box-shadow:
+                0 0 5px #00ff00,
+                0 0 10px #00ff00,
+                0 0 20px #00ff00,
+                0 0 40px #00ff00;
+            border-radius: 10px;
         }
 
         @keyframes floatUpDown {
             0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-5px); }
+            50% { transform: translateX(-50%) translateY(-10px); }
         }
     </style>
 </head>
@@ -111,7 +119,7 @@
                 <i class="fas fa-play"></i>
             </button>
 
-            <button class="control-btn" id="nextBtnMusic">
+            <button class="control-btn" id="nextBtn">
                 <i class="fas fa-step-forward"></i>
             </button>
         </div>
@@ -208,7 +216,7 @@
         </div>
     </footer>
 
-    <!-- LOGO FIJO ABAJO -->
+    <!-- LOGO FIJO ABAJO CON NEON -->
     <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Logo" class="fixed-logo">
 
     <!-- TU SCRIPT ORIGINAL -->
