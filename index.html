@@ -231,9 +231,8 @@
         }
     </script>
 
-    <!-- 🔹 VIBRACIÓN FÍSICA Y VISUAL COMPLETA -->
+    <!-- 🔹 VIBRACIÓN CLICK + TOUCH -->
     <script>
-      // Vibración Android
       function vibrar(ms = 100) {
         if (navigator.vibrate) navigator.vibrate(ms);
       }
@@ -241,14 +240,9 @@
       // Botones de compra
       const comprarBtns = document.querySelectorAll('.buy-btn');
       comprarBtns.forEach(btn => {
-        btn.addEventListener('click', e => {
-          vibrar(150);
-          const href = btn.getAttribute('href');
-          if (href) {
-            e.preventDefault();
-            setTimeout(() => window.open(href, '_blank'), 100);
-          }
-        });
+        // Click vibración
+        btn.addEventListener('click', () => vibrar(150));
+        // Touch vibración
         btn.addEventListener('touchstart', () => vibrar(150));
       });
 
@@ -257,44 +251,23 @@
       const prevBtn = document.getElementById('prevBtn');
       const nextBtn = document.getElementById('nextBtn');
 
-      // Clic o touch en prev/next
       [prevBtn, nextBtn].forEach(btn => {
         const vibrarCarrusel = () => {
           vibrar(100);
           carousel.classList.add('vibrar');
           setTimeout(() => carousel.classList.remove('vibrar'), 200);
         };
+        // Click
         btn.addEventListener('click', vibrarCarrusel);
+        // Touch
         btn.addEventListener('touchstart', vibrarCarrusel);
       });
 
-      // Tocar directamente el carrusel (touch)
+      // Touch directamente sobre carrusel
       carousel.addEventListener('touchstart', () => {
         vibrar(100);
         carousel.classList.add('vibrar');
         setTimeout(() => carousel.classList.remove('vibrar'), 200);
-      });
-
-      // Arrastrar carrusel → vibración visual
-      let isDragging = false;
-      carousel.addEventListener('mousedown', () => isDragging = true);
-      carousel.addEventListener('mouseup', () => isDragging = false);
-      carousel.addEventListener('mouseleave', () => isDragging = false);
-      carousel.addEventListener('touchstart', () => isDragging = true);
-      carousel.addEventListener('touchend', () => isDragging = false);
-
-      carousel.addEventListener('mousemove', () => {
-        if (isDragging) {
-          carousel.classList.add('vibrar');
-          setTimeout(() => carousel.classList.remove('vibrar'), 150);
-        }
-      });
-
-      carousel.addEventListener('touchmove', () => {
-        if (isDragging) {
-          carousel.classList.add('vibrar');
-          setTimeout(() => carousel.classList.remove('vibrar'), 150);
-        }
       });
     </script>
 
