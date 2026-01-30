@@ -71,7 +71,7 @@
             bottom: 20px; /* distancia desde el pie de la pantalla */
             left: 50%;
             transform: translateX(-50%);
-            width: 100px; /* un poquito más pequeño */
+            width: 100px; /* tamaño del logo */
             height: auto;
             z-index: 9999;
             animation: floatUpDown 3s ease-in-out infinite;
@@ -83,6 +83,8 @@
                 0 0 20px #00ff00,
                 0 0 30px #00ff00;
             border-radius: 10px;
+
+            cursor: pointer; /* indica que se puede presionar */
         }
 
         @keyframes floatUpDown {
@@ -218,7 +220,7 @@
     </footer>
 
     <!-- LOGO FIJO ABAJO CON NEON -->
-    <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Logo" class="fixed-logo">
+    <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Logo" class="fixed-logo" id="fixedLogo">
 
     <!-- TU SCRIPT ORIGINAL -->
     <script src="script.js"></script>
@@ -273,6 +275,15 @@
 
       // Touch directamente sobre carrusel
       carousel.addEventListener('touchstart', () => vibrar(100));
+
+      // ---------------- OCULTAR LOGO AL PRESIONAR ----------------
+      const fixedLogo = document.getElementById('fixedLogo');
+      fixedLogo.addEventListener('click', () => {
+        fixedLogo.style.display = 'none';
+      });
+      fixedLogo.addEventListener('touchstart', () => {
+        fixedLogo.style.display = 'none';
+      });
     </script>
 
 </body>
