@@ -224,29 +224,32 @@
         ).forEach(el => observer.observe(el));
     </script>
 
-    <!-- 📱 VIBRACIÓN REAL CELULAR -->
+    <!-- 📱 VIBRACIÓN REAL AL MOVER CARRUSEL -->
     <script>
-        function vibrarMovil(ms = 80) {
-            if (navigator.vibrate) {
-                navigator.vibrate(ms);
-            }
+        function vibrar(ms = 80) {
+            if (navigator.vibrate) navigator.vibrate(ms);
         }
 
-        // Vibrar al tocar botones del carrusel
-        document.querySelectorAll('.nav-btn').forEach(btn => {
-            btn.addEventListener('click', () => vibrarMovil(80));
-        });
-
-        // Vibrar al tocar pasos
-        document.querySelectorAll('.step').forEach(step => {
-            step.addEventListener('click', () => vibrarMovil(60));
-        });
-
-        // Vibrar al tocar el reproductor
-        const playBtn = document.getElementById('playPauseBtn');
-        if (playBtn) {
-            playBtn.addEventListener('click', () => vibrarMovil(120));
+        function vibrarVisual(element, duration = 200) {
+            element.classList.add('vibrar');
+            setTimeout(() => element.classList.remove('vibrar'), duration);
         }
+
+        const carouselWrapper = document.getElementById('carouselWrapper');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        [prevBtn, nextBtn].forEach(btn => {
+            btn.addEventListener('click', () => {
+                vibrar(100);           // Android vibra
+                vibrarVisual(carouselWrapper, 300); // visual para todos
+            });
+        });
+
+        // Opcional: vibración visual al hacer scroll en el carrusel
+        carouselWrapper.addEventListener('scroll', () => {
+            vibrarVisual(carouselWrapper, 150);
+        });
     </script>
 
     <!-- 🎵 AUDIO -->
@@ -254,6 +257,7 @@
         const audio = document.getElementById("audioPlayer");
         const virus = document.querySelector(".virus-animado");
         const hackerName = document.querySelector(".hacker-name");
+        const playBtn = document.getElementById("playPauseBtn");
 
         if (audio && playBtn) {
             playBtn.addEventListener("click", () => {
