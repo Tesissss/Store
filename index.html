@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- 🦠 ESTILOS HACKER -->
     <style>
         .virus-animado {
             display: inline-block;
@@ -37,7 +39,7 @@
             100% { opacity: 0.6; letter-spacing: 2px; }
         }
 
-        /* FOOTER ANIMADO */
+        /* --------- FOOTER ANIMADO --------- */
         .footer-logo {
             position: relative;
             overflow: hidden;
@@ -50,7 +52,7 @@
             display: inline-block;
             white-space: nowrap;
             position: absolute;
-            font-size: 15px; /* ⬅️ SOLO SE HIZO UN POCO MÁS GRANDE */
+            font-size: 15px; /* ⬅️ SOLO SE AUMENTÓ UN POCO */
             animation: slideLeft 5s linear infinite;
         }
         @keyframes slideLeft {
@@ -58,6 +60,7 @@
             100% { transform: translateX(-100%); }
         }
 
+        /* LOGO FIJO */
         .fixed-logo {
             position: fixed;
             bottom: 20px;
@@ -73,27 +76,30 @@
             50%{transform:translateX(-50%) translateY(-10px)}
         }
 
-        .step,.no-products,.carousel-wrapper>div{
-            border:2px solid #800080;
-            border-radius:12px;
-            padding:12px;
-            box-shadow:0 0 8px #80008050
+        /* BORDES PÚRPURA 🍆 */
+        .step, .no-products, .carousel-wrapper > div {
+            border: 2px solid #800080;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 0 8px #80008050;
         }
 
-        .rainbow-text{
-            background:linear-gradient(90deg,#ff0000,#ff9900,#ffff00,#00ff00,#00ffff,#0000ff,#9900ff);
-            background-size:400% 100%;
-            -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;
-            animation:rainbowMove 8s linear infinite
+        /* ARCOÍRIS */
+        .rainbow-text {
+            background: linear-gradient(90deg,#ff0000,#ff9900,#ffff00,#00ff00,#00ffff,#0000ff,#9900ff);
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowMove 8s linear infinite;
         }
-        @keyframes rainbowMove{
-            0%{background-position:0% 50%}
-            50%{background-position:100% 50%}
-            100%{background-position:0% 50%}
+        @keyframes rainbowMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
     </style>
 </head>
+
 <body>
 <div id="stars-container"></div>
 
@@ -102,6 +108,35 @@
 </div>
 
 <div class="hacker-name">🦄드림가 Carlos</div>
+
+<header>
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-code logo-icon"></i>
+            <h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
+        </div>
+        <p class="tagline">Scripts premium y herramientas de automatización 🦠</p>
+        <div class="separator"></div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="products-section">
+        <h2 class="section-title rainbow-text">
+            <i class="fas fa-box-open"></i> Productos Disponibles
+        </h2>
+
+        <div class="carousel-container">
+            <div class="carousel-wrapper" id="carouselWrapper">
+                <div class="no-products">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h3>Sin productos actualmente</h3>
+                    <p>Estamos actualizando nuestro catálogo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 
 <footer>
     <div class="container">
@@ -122,5 +157,6 @@
 
 <img src="https://i.imgur.com/3AGErRG.jpeg" class="fixed-logo" id="fixedLogo">
 <script src="script.js"></script>
+
 </body>
 </html>
