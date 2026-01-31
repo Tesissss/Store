@@ -112,16 +112,17 @@
         }
 
         .terminal-text {
-            fill: none;
-            stroke: #00ff99;
-            stroke-width: 1.6; /* ✅ MÁS GRUESO (BAJADO 2) */
-            font-family: "Courier New", monospace;
-            font-size: 22px; /* ✅ MÁS GRANDE (BAJADO 2) */
-            letter-spacing: 2px;
-            stroke-dasharray: 520; /* un poco más para el texto grande */
-            stroke-dashoffset: 520;
-            animation: terminalDraw 6s linear infinite, terminalGlow 2s ease-in-out infinite;
-        }
+    fill: none;
+    stroke: #00ff99;
+    stroke-width: 1.7;   /* ⬆️ apenas más grueso */
+    font-family: "Courier New", monospace;
+    font-size: 24px;     /* ⬆️ un poquito más grande */
+    letter-spacing: 2px;
+    stroke-dasharray: 520;
+    stroke-dashoffset: 520;
+    animation: terminalDraw 6s linear infinite, terminalGlow 2s ease-in-out infinite;
+}
+        
 
         @keyframes terminalDraw {
             to { stroke-dashoffset: 0; }
