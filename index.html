@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <!-- 🦠 ESTILOS HACKER -->
     <style>
         .virus-animado {
@@ -74,38 +73,25 @@
             50% { transform: translateX(-50%) translateY(-10px); }
         }
 
-        /* NEÓN SUAVE SOLO PARA PALABRAS ESPECÍFICAS */
-        .neon-text {
-            color: #00cc00; /* verde neón suave */
-            text-shadow: 0 0 4px #00cc00, 0 0 8px #00cc00;
-        }
-
-        /* 🍆 COLOR PARA TODOS LOS CUADROS DE TEXTO Y PRODUCTOS */
+        /* ---------- BORDES PÚRPURA 🍆 PARA CUADROS ---------- */
         .step, 
         .no-products, 
         .carousel-wrapper > div {
-            background-color: #800080; /* color púrpura 🍆 */
+            border: 2px solid #800080; /* borde púrpura 🍆 */
             border-radius: 12px;
             padding: 12px;
-            color: #fff; /* texto blanco sobre púrpura */
-        }
-
-        .carousel-wrapper > div {
-            margin: 8px;
+            box-shadow: 0 0 8px #80008050; /* sombra ligera púrpura */
         }
     </style>
 </head>
 <body>
     <div id="stars-container"></div>
-
     <!-- 🦠 VIRUS -->
     <div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
         <span class="virus-animado">🦠</span>
     </div>
-
     <!-- 💻 NOMBRE -->
     <div class="hacker-name">🦄드림가 Carlos</div>
-
     <!-- 🎵 REPRODUCTOR -->
     <div class="music-player" id="musicPlayer">
         <div class="player-btn" id="togglePlayer">
@@ -126,7 +112,6 @@
             <source src="music.mp3" type="audio/mpeg">
         </audio>
     </div>
-
     <header>
         <div class="container">
             <div class="logo">
@@ -139,12 +124,10 @@
             <div class="separator"></div>
         </div>
     </header>
-
     <main class="container">
         <section class="products-section">
             <h2 class="section-title">
-                <i class="fas fa-box-open"></i> 
-                <span class="neon-text">Productos Disponibles</span>
+                <i class="fas fa-box-open"></i> Productos Disponibles
             </h2>
             <div class="carousel-container">
                 <div class="carousel-wrapper" id="carouselWrapper">
@@ -152,15 +135,6 @@
                         <i class="fas fa-exclamation-circle"></i>
                         <h3>Sin productos actualmente</h3>
                         <p>Estamos actualizando nuestro catálogo.</p>
-                    </div>
-                    <!-- Ejemplo de producto -->
-                    <div class="product-item">
-                        <h3>Script Automático 1</h3>
-                        <p>Descripción breve del script.</p>
-                    </div>
-                    <div class="product-item">
-                        <h3>Script Automático 2</h3>
-                        <p>Descripción breve del script.</p>
                     </div>
                 </div>
                 <div class="carousel-nav" id="carouselNav">
@@ -174,32 +148,29 @@
                 </div>
             </div>
         </section>
-
         <section class="procedure-section">
             <h2 class="procedure-title">
-                <i class="fas fa-shopping-cart"></i> 
-                <span class="neon-text">Procedimiento de Compra</span>
+                <i class="fas fa-shopping-cart"></i> Procedimiento de Compra
             </h2>
             <div class="procedure-steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3 class="step-title"><span class="neon-text">Selecciona el Producto</span></h3>
-                    <p class="step-description"><span class="neon-text">Elige el script que necesitas.</span></p>
+                    <h3 class="step-title">Selecciona el Producto</h3>
+                    <p class="step-description">Elige el script que necesitas.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3 class="step-title"><span class="neon-text">Haz clic en Comprar</span></h3>
-                    <p class="step-description"><span class="neon-text">Compra por WhatsApp.</span></p>
+                    <h3 class="step-title">Haz clic en Comprar</h3>
+                    <p class="step-description">Compra por WhatsApp.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3 class="step-title"><span class="neon-text">Confirmación</span></h3>
-                    <p class="step-description"><span class="neon-text">Recibe instrucciones.</span></p>
+                    <h3 class="step-title">Confirmación</h3>
+                    <p class="step-description">Recibe instrucciones.</p>
                 </div>
             </div>
         </section>
     </main>
-
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -214,49 +185,42 @@
             </div>
         </div>
     </footer>
-
     <!-- LOGO FIJO ABAJO -->
     <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Logo" class="fixed-logo" id="fixedLogo">
-
     <!-- TU SCRIPT ORIGINAL -->
     <script src="script.js"></script>
-
     <!-- 🎵 SINCRONIZACIÓN AUDIO -->
     <script>
         const audio = document.getElementById("audioPlayer");
         const playBtn = document.getElementById("playPauseBtn");
         const virus = document.querySelector(".virus-animado");
         const hackerName = document.querySelector(".hacker-name");
-
         if (audio && playBtn) {
             playBtn.addEventListener("click", () => {
                 audio.paused ? audio.play() : audio.pause();
             });
-
             audio.addEventListener("play", () => {
                 if (virus) virus.style.animation = "virusBeat 0.6s infinite";
                 if (hackerName) hackerName.style.animation = "hackerGlow 1s infinite";
             });
-
             audio.addEventListener("pause", () => {
                 if (virus) virus.style.animation = "none";
                 if (hackerName) hackerName.style.animation = "none";
             });
         }
     </script>
-
-    <!-- 🔹 VIBRACIÓN CLICK + TOUCH -->
+    <!-- 🔹 VIBRACIÓN CLICK + TOUCH (SIN VIBRACIÓN VISUAL) -->
     <script>
         function vibrar(ms = 100) {
             if (navigator.vibrate) navigator.vibrate(ms);
         }
-
+        // Botones de compra
         const comprarBtns = document.querySelectorAll('.buy-btn');
         comprarBtns.forEach(btn => {
             btn.addEventListener('click', () => vibrar(150));
             btn.addEventListener('touchstart', () => vibrar(150));
         });
-
+        // Carrusel: solo vibración real, visual eliminada
         const carousel = document.getElementById('carouselWrapper');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
@@ -265,15 +229,15 @@
             btn.addEventListener('click', vibrarCarrusel);
             btn.addEventListener('touchstart', vibrarCarrusel);
         });
-
+        // Touch directamente sobre carrusel
         carousel.addEventListener('touchstart', () => vibrar(100));
-
+        // 🔹 LOGO FIJO ABAJO - DESAPARECE AL CLIC Y VUELVE DESPUÉS DE 15 SEGUNDOS
         const fixedLogo = document.getElementById('fixedLogo');
         fixedLogo.addEventListener('click', () => {
             fixedLogo.style.display = 'none';
             setTimeout(() => {
                 fixedLogo.style.display = 'block';
-            }, 15000);
+            }, 15000); // 15000 ms = 15 segundos
         });
         fixedLogo.addEventListener('touchstart', () => {
             fixedLogo.style.display = 'none';
