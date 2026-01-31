@@ -9,31 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- 🦠 ESTILOS HACKER -->
     <style>
-        /* ---------- ESTRELLAS ARCOÍRIS DE FONDO ---------- */
-        #stars-container {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .star {
-            position: absolute;
-            border-radius: 50%;
-            width: 2px;
-            height: 2px;
-            animation: floatStars linear infinite;
-        }
-        @keyframes floatStars {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(-1000px) translateX(50px); opacity: 0; }
-        }
-
-        /* ---------- VIRUS ---------- */
         .virus-animado {
             display: inline-block;
             animation: none;
@@ -44,8 +19,6 @@
             50% { transform: scale(1.3) rotate(5deg); }
             100% { transform: scale(1); }
         }
-
-        /* ---------- NOMBRE HACKER ---------- */
         .hacker-name {
             position: fixed;
             top: 60px;
@@ -64,16 +37,15 @@
             50% { opacity: 1; letter-spacing: 6px; }
             100% { opacity: 0.6; letter-spacing: 2px; }
         }
-
-        /* ---------- FOOTER ANIMADO ---------- */
+        /* --------- FOOTER ANIMADO CORRECTO --------- */
         .footer-logo {
             position: relative;
             overflow: hidden;
             width: 100%;
-            height: 24px;
+            height: 24px; /* ajusta si quieres más grande */
         }
         .powered-green {
-            color: #00ff00;
+            color: #00ff00; /* verde intenso */
             text-shadow: 0 0 6px #00ff00;
             display: inline-block;
             white-space: nowrap;
@@ -84,18 +56,17 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
-
-        /* ---------- LOGO FIJO ABAJO ---------- */
+        /* ---------------- LOGO FIJO ABAJO ---------------- */
         .fixed-logo {
             position: fixed;
-            bottom: 20px;
+            bottom: 20px; /* distancia desde el pie de la pantalla */
             left: 50%;
             transform: translateX(-50%);
-            width: 150px;
+            width: 150px; /* tamaño del logo */
             height: auto;
             z-index: 9999;
             animation: floatUpDown 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 12px #00ff00);
+            filter: drop-shadow(0 0 12px #00ff00); /* neón verde */
         }
         @keyframes floatUpDown {
             0%, 100% { transform: translateX(-50%) translateY(0); }
@@ -109,11 +80,37 @@
             border: 2px solid #800080; /* borde púrpura 🍆 */
             border-radius: 12px;
             padding: 12px;
-            box-shadow: 0 0 8px #80008050;
+            box-shadow: 0 0 8px #80008050; /* sombra ligera púrpura */
         }
 
-        /* ---------- LOGO Y TITULOS ARCOÍRIS ---------- */
-        .logo .logo-icon, .section-title, .procedure-title {
+        /* ---------- ESTRELLAS ARCOÍRIS DE FONDO ---------- */
+        #stars-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+            animation: floatStars linear infinite;
+            opacity: 0.8;
+        }
+        @keyframes floatStars {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-1000px) translateX(50px); opacity: 0; }
+        }
+
+        /* ---------- LOGO ARCOÍRIS ---------- */
+        .logo .logo-icon {
             background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
             -webkit-background-clip: text;
             color: transparent;
@@ -126,42 +123,46 @@
     </style>
 </head>
 <body>
+    <!-- ESTRELLAS -->
     <div id="stars-container"></div>
-
     <!-- 🦠 VIRUS -->
     <div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
         <span class="virus-animado">🦠</span>
     </div>
-
     <!-- 💻 NOMBRE -->
     <div class="hacker-name">🦄드림가 Carlos</div>
-
     <!-- 🎵 REPRODUCTOR -->
     <div class="music-player" id="musicPlayer">
         <div class="player-btn" id="togglePlayer">
             <i class="fas fa-music"></i>
         </div>
         <div class="player-controls">
-            <button class="control-btn" id="prevBtnMusic"><i class="fas fa-step-backward"></i></button>
-            <button class="control-btn" id="playPauseBtn"><i class="fas fa-play"></i></button>
-            <button class="control-btn" id="nextBtnMusic"><i class="fas fa-step-forward"></i></button>
+            <button class="control-btn" id="prevBtnMusic">
+                <i class="fas fa-step-backward"></i>
+            </button>
+            <button class="control-btn" id="playPauseBtn">
+                <i class="fas fa-play"></i>
+            </button>
+            <button class="control-btn" id="nextBtnMusic">
+                <i class="fas fa-step-forward"></i>
+            </button>
         </div>
         <audio id="audioPlayer" loop>
             <source src="music.mp3" type="audio/mpeg">
         </audio>
     </div>
-
     <header>
         <div class="container">
             <div class="logo">
                 <i class="fas fa-code logo-icon"></i>
                 <h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
             </div>
-            <p class="tagline">Scripts premium y herramientas de automatización 🦠</p>
+            <p class="tagline">
+                Scripts premium y herramientas de automatización 🦠
+            </p>
             <div class="separator"></div>
         </div>
     </header>
-
     <main class="container">
         <section class="products-section">
             <h2 class="section-title">
@@ -176,13 +177,16 @@
                     </div>
                 </div>
                 <div class="carousel-nav" id="carouselNav">
-                    <button class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="nav-btn" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
                     <div class="nav-dots" id="navDots"></div>
-                    <button class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                    <button class="nav-btn" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </section>
-
         <section class="procedure-section">
             <h2 class="procedure-title">
                 <i class="fas fa-shopping-cart"></i> Procedimiento de Compra
@@ -206,7 +210,6 @@
             </div>
         </section>
     </main>
-
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -215,24 +218,22 @@
                     <i class="fas fa-cube"></i>
                     <span class="powered-green">Powered by Carlos | 2026</span>
                 </div>
-                <p class="copyright">Tienda de scripts especializados.</p>
+                <p class="copyright">
+                    Tienda de scripts especializados.
+                </p>
             </div>
         </div>
     </footer>
-
     <!-- LOGO FIJO ABAJO -->
     <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Logo" class="fixed-logo" id="fixedLogo">
-
     <!-- TU SCRIPT ORIGINAL -->
     <script src="script.js"></script>
-
     <!-- 🎵 SINCRONIZACIÓN AUDIO -->
     <script>
         const audio = document.getElementById("audioPlayer");
         const playBtn = document.getElementById("playPauseBtn");
         const virus = document.querySelector(".virus-animado");
         const hackerName = document.querySelector(".hacker-name");
-
         if (audio && playBtn) {
             playBtn.addEventListener("click", () => {
                 audio.paused ? audio.play() : audio.pause();
@@ -246,21 +247,55 @@
                 if (hackerName) hackerName.style.animation = "none";
             });
         }
+    </script>
+    <!-- 🔹 VIBRACIÓN CLICK + TOUCH (SIN VIBRACIÓN VISUAL) -->
+    <script>
+        function vibrar(ms = 100) {
+            if (navigator.vibrate) navigator.vibrate(ms);
+        }
+        // Botones de compra
+        const comprarBtns = document.querySelectorAll('.buy-btn');
+        comprarBtns.forEach(btn => {
+            btn.addEventListener('click', () => vibrar(150));
+            btn.addEventListener('touchstart', () => vibrar(150));
+        });
+        // Carrusel: solo vibración real, visual eliminada
+        const carousel = document.getElementById('carouselWrapper');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        [prevBtn, nextBtn].forEach(btn => {
+            const vibrarCarrusel = () => vibrar(100);
+            btn.addEventListener('click', vibrarCarrusel);
+            btn.addEventListener('touchstart', vibrarCarrusel);
+        });
+        // Touch directamente sobre carrusel
+        carousel.addEventListener('touchstart', () => vibrar(100));
+        // 🔹 LOGO FIJO ABAJO - DESAPARECE AL CLIC Y VUELVE DESPUÉS DE 15 SEGUNDOS
+        const fixedLogo = document.getElementById('fixedLogo');
+        fixedLogo.addEventListener('click', () => {
+            fixedLogo.style.display = 'none';
+            setTimeout(() => {
+                fixedLogo.style.display = 'block';
+            }, 15000); // 15000 ms = 15 segundos
+        });
+        fixedLogo.addEventListener('touchstart', () => {
+            fixedLogo.style.display = 'none';
+            setTimeout(() => {
+                fixedLogo.style.display = 'block';
+            }, 15000);
+        });
 
-        /* ---------- ESTRELLAS ARCOÍRIS ---------- */
-        const starsContainer = document.getElementById("stars-container");
-        const numStars = 120;
-        for (let i = 0; i < numStars; i++) {
-            const star = document.createElement("div");
-            star.classList.add("star");
-            const size = Math.random() * 3 + 1;
-            star.style.width = size + "px";
-            star.style.height = size + "px";
-            star.style.top = Math.random() * 100 + "%";
-            star.style.left = Math.random() * 100 + "%";
-            star.style.background = `linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet)`;
-            star.style.backgroundClip = "text";
-            star.style.animationDuration = (Math.random() * 15 + 10) + "s";
+        // ---------- GENERAR ESTRELLAS DINÁMICAS ----------
+        const starsContainer = document.getElementById('stars-container');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.width = (1 + Math.random() * 2) + 'px';
+            star.style.height = star.style.width;
+            star.style.animationDuration = (5 + Math.random() * 5) + 's';
+            star.style.animationDelay = (Math.random() * 5) + 's';
             starsContainer.appendChild(star);
         }
     </script>
