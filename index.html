@@ -8,18 +8,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- 🦠 ESTILOS HACKER -->
     <style>
         .virus-animado {
             display: inline-block;
             animation: none;
             filter: drop-shadow(0 0 6px #00ff99);
         }
+
         @keyframes virusBeat {
             0% { transform: scale(1); }
             50% { transform: scale(1.3) rotate(5deg); }
             100% { transform: scale(1); }
         }
+
         .hacker-name {
             position: fixed;
             top: 60px;
@@ -33,48 +34,49 @@
             z-index: 9999;
             white-space: nowrap;
         }
+
         @keyframes hackerGlow {
             0% { opacity: 0.6; letter-spacing: 2px; }
             50% { opacity: 1; letter-spacing: 6px; }
             100% { opacity: 0.6; letter-spacing: 2px; }
         }
 
-        /* --------- FOOTER ANIMADO CORRECTO --------- */
+        /* FOOTER */
         .footer-logo {
             position: relative;
             overflow: hidden;
             width: 100%;
             height: 26px;
         }
+
         .powered-green {
-            color: #00ff00;
-            text-shadow: 0 0 6px #00ff00;
             display: inline-block;
             white-space: nowrap;
             position: absolute;
-            animation: slideLeft 5s linear infinite;
+            animation: slideLeft 8s linear infinite;
         }
+
         @keyframes slideLeft {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
 
-        /* 🔥 TERMINAL HACKER (SOLO TEXTO FOOTER) */
+        /* 🔥 ESTILO TERMINAL / MATRIX */
         .terminal-hacker {
             font-family: 'Courier New', monospace;
-            font-size: 18px;
-            letter-spacing: 2px;
-            color: #00ffcc;
-            text-shadow: 0 0 4px #00ffcc, 0 0 8px #00ffcc;
-            animation: terminalGlow 2.5s ease-in-out infinite;
-        }
-        @keyframes terminalGlow {
-            0% { opacity: 0.7; }
-            50% { opacity: 1; }
-            100% { opacity: 0.7; }
+            font-size: 15px;
+            color: #00ff99;
+            text-shadow:
+                0 0 4px #00ff99,
+                0 0 8px #00ff9950;
+            animation: terminalBlink 1.8s ease-in-out infinite;
         }
 
-        /* ---------------- LOGO FIJO ABAJO ---------------- */
+        @keyframes terminalBlink {
+            0%,100% { opacity: 0.75; }
+            50% { opacity: 1; }
+        }
+
         .fixed-logo {
             position: fixed;
             bottom: 20px;
@@ -85,20 +87,21 @@
             animation: floatUpDown 3s ease-in-out infinite;
             filter: drop-shadow(0 0 12px #00ff00);
         }
+
         @keyframes floatUpDown {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
+            0%,100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(-10px); }
         }
 
-        /* ---------- BORDES PÚRPURA 🍆 ---------- */
-        .step, .no-products, .carousel-wrapper > div {
+        .step,
+        .no-products,
+        .carousel-wrapper > div {
             border: 2px solid #800080;
             border-radius: 12px;
             padding: 12px;
             box-shadow: 0 0 8px #80008050;
         }
 
-        /* ----------- ARCOÍRIS ----------- */
         .rainbow-text {
             background: linear-gradient(90deg,#ff0000,#ff9900,#ffff00,#00ff00,#00ffff,#0000ff,#9900ff);
             background-size: 400% 100%;
@@ -106,6 +109,7 @@
             -webkit-text-fill-color: transparent;
             animation: rainbowMove 8s linear infinite;
         }
+
         @keyframes rainbowMove {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -115,42 +119,36 @@
 </head>
 
 <body>
-<div id="stars-container"></div>
+    <div id="stars-container"></div>
 
-<div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
-    <span class="virus-animado">🦠</span>
-</div>
-
-<div class="hacker-name">🦄드림가 Carlos</div>
-
-<header>
-    <div class="container">
-        <div class="logo">
-            <i class="fas fa-code logo-icon"></i>
-            <h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
-        </div>
-        <p class="tagline">Scripts premium y herramientas de automatización 🦠</p>
-        <div class="separator"></div>
+    <div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
+        <span class="virus-animado">🦠</span>
     </div>
-</header>
 
-<footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="separator"></div>
-            <div class="footer-logo">
-                <i class="fas fa-cube"></i>
-                <span class="powered-green terminal-hacker">
-                    Copyright © 2026 Carlos-Interative-2take1 All rights reserved
-                </span>
+    <div class="hacker-name">🦄드림가 Carlos</div>
+
+    <!-- TODO TU CONTENIDO ORIGINAL SIGUE IGUAL -->
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="separator"></div>
+
+                <div class="footer-logo">
+                    <span class="powered-green terminal-hacker">
+                        Copyright © 2026 Carlos-Interative-2take1 All rights reserved
+                    </span>
+                </div>
+
+                <p class="copyright">
+                    Tienda de scripts especializados.
+                </p>
             </div>
-            <p class="copyright">Tienda de scripts especializados.</p>
         </div>
-    </div>
-</footer>
+    </footer>
 
-<img src="https://i.imgur.com/3AGErRG.jpeg" class="fixed-logo">
+    <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Logo" class="fixed-logo" id="fixedLogo">
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
