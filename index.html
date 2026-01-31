@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- 🦠 ESTILOS HACKER -->
     <style>
         .virus-animado {
             display: inline-block;
@@ -38,6 +39,7 @@
             100% { opacity: 0.6; letter-spacing: 2px; }
         }
 
+        /* --------- FOOTER --------- */
         .footer-logo {
             position: relative;
             overflow: hidden;
@@ -100,11 +102,34 @@
 
 <div id="stars-container"></div>
 
+<!-- 🦠 VIRUS -->
 <div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
     <span class="virus-animado">🦠</span>
 </div>
 
+<!-- 💻 NOMBRE -->
 <div class="hacker-name">🦄드림가 Carlos</div>
+
+<!-- 🎵 REPRODUCTOR -->
+<div class="music-player" id="musicPlayer">
+    <div class="player-btn" id="togglePlayer">
+        <i class="fas fa-music"></i>
+    </div>
+    <div class="player-controls">
+        <button class="control-btn" id="prevBtnMusic">
+            <i class="fas fa-step-backward"></i>
+        </button>
+        <button class="control-btn" id="playPauseBtn">
+            <i class="fas fa-play"></i>
+        </button>
+        <button class="control-btn" id="nextBtnMusic">
+            <i class="fas fa-step-forward"></i>
+        </button>
+    </div>
+    <audio id="audioPlayer" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+</div>
 
 <header>
     <div class="container">
@@ -122,9 +147,13 @@
         <h2 class="section-title rainbow-text">
             <i class="fas fa-box-open"></i> Productos Disponibles
         </h2>
-        <div class="carousel-wrapper">
-            <div class="no-products">
-                <h3>Sin productos actualmente</h3>
+        <div class="carousel-container">
+            <div class="carousel-wrapper" id="carouselWrapper">
+                <div class="no-products" id="noProductsMessage">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h3>Sin productos actualmente</h3>
+                    <p>Estamos actualizando nuestro catálogo.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -136,6 +165,7 @@
             <div class="separator"></div>
             <div class="footer-logo">
                 <i class="fas fa-cube"></i>
+                <!-- 🔥 TEXTO CAMBIADO (MISMA POSICIÓN) -->
                 <span class="powered-green" id="hackerFooter">
                     Copyright © Carlos-Interative-2take1 All rights reserved 2026
                 </span>
@@ -145,8 +175,11 @@
     </div>
 </footer>
 
-<img src="https://i.imgur.com/3AGErRG.jpeg" class="fixed-logo" id="fixedLogo">
+<img src="https://i.imgur.com/3AGErRG.jpeg" alt="Logo" class="fixed-logo" id="fixedLogo">
 
+<script src="script.js"></script>
+
+<!-- 🔥 EFECTO HACKER FOOTER -->
 <script>
 const footerText = document.getElementById("hackerFooter");
 const originalText = footerText.innerText;
