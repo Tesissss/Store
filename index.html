@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- 🦠 ESTILOS HACKER -->
+
     <style>
         .virus-animado {
             display: inline-block;
@@ -37,61 +37,53 @@
             50% { opacity: 1; letter-spacing: 6px; }
             100% { opacity: 0.6; letter-spacing: 2px; }
         }
-        /* --------- FOOTER ANIMADO CORRECTO --------- */
+
         .footer-logo {
             position: relative;
             overflow: hidden;
             width: 100%;
-            height: 24px; /* ajusta si quieres más grande */
+            height: 24px;
+            text-align: center;
         }
+
         .powered-green {
-            color: #00ff00; /* verde intenso */
+            color: #00ff00;
             text-shadow: 0 0 6px #00ff00;
             display: inline-block;
             white-space: nowrap;
-            position: absolute;
-            animation: slideLeft 5s linear infinite;
+            position: relative;
+            animation: none; /* 🔒 NO SE MUEVE */
         }
-        @keyframes slideLeft {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        /* ---------------- LOGO FIJO ABAJO ---------------- */
+
         .fixed-logo {
             position: fixed;
-            bottom: 20px; /* distancia desde el pie de la pantalla */
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 150px; /* tamaño del logo */
-            height: auto;
+            width: 150px;
             z-index: 9999;
             animation: floatUpDown 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 12px #00ff00); /* neón verde */
+            filter: drop-shadow(0 0 12px #00ff00);
         }
         @keyframes floatUpDown {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
+            0%,100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(-10px); }
         }
 
-        /* ---------- BORDES PÚRPURA 🍆 PARA CUADROS ---------- */
-        .step, 
-        .no-products, 
-        .carousel-wrapper > div {
-            border: 2px solid #800080; /* borde púrpura 🍆 */
+        .step, .no-products, .carousel-wrapper > div {
+            border: 2px solid #800080;
             border-radius: 12px;
             padding: 12px;
-            box-shadow: 0 0 8px #80008050; /* sombra ligera púrpura */
+            box-shadow: 0 0 8px #80008050;
         }
 
-        /* ----------- ARCOÍRIS PARA TÍTULOS ----------- */
         .rainbow-text {
-            background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #9900ff);
+            background: linear-gradient(90deg,#ff0000,#ff9900,#ffff00,#00ff00,#00ffff,#0000ff,#9900ff);
             background-size: 400% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: rainbowMove 8s linear infinite;
         }
-
         @keyframes rainbowMove {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -99,167 +91,61 @@
         }
     </style>
 </head>
+
 <body>
-    <div id="stars-container"></div>
-    <!-- 🦠 VIRUS -->
-    <div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
-        <span class="virus-animado">🦠</span>
-    </div>
-    <!-- 💻 NOMBRE -->
-    <div class="hacker-name">🦄드림가 Carlos</div>
-    <!-- 🎵 REPRODUCTOR -->
-    <div class="music-player" id="musicPlayer">
-        <div class="player-btn" id="togglePlayer">
-            <i class="fas fa-music"></i>
+<div id="stars-container"></div>
+
+<div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
+    <span class="virus-animado">🦠</span>
+</div>
+
+<div class="hacker-name">🦄드림가 Carlos</div>
+
+<header>
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-code logo-icon"></i>
+            <h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
         </div>
-        <div class="player-controls">
-            <button class="control-btn" id="prevBtnMusic">
-                <i class="fas fa-step-backward"></i>
-            </button>
-            <button class="control-btn" id="playPauseBtn">
-                <i class="fas fa-play"></i>
-            </button>
-            <button class="control-btn" id="nextBtnMusic">
-                <i class="fas fa-step-forward"></i>
-            </button>
-        </div>
-        <audio id="audioPlayer" loop>
-            <source src="music.mp3" type="audio/mpeg">
-        </audio>
+        <p class="tagline">Scripts premium y herramientas de automatización 🦠</p>
+        <div class="separator"></div>
     </div>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <i class="fas fa-code logo-icon"></i>
-                <h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
+</header>
+
+<main class="container">
+    <section class="products-section">
+        <h2 class="section-title rainbow-text">
+            <i class="fas fa-box-open"></i> Productos Disponibles
+        </h2>
+        <div class="carousel-wrapper" id="carouselWrapper">
+            <div class="no-products">
+                <h3>Productos cargados correctamente</h3>
             </div>
-            <p class="tagline">
-                Scripts premium y herramientas de automatización 🦠
-            </p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
             <div class="separator"></div>
+
+            <div class="footer-logo">
+                <i class="fas fa-cube"></i>
+                <span class="powered-green">
+                    Copyright © 2026 Carlos-Interative-2take1 All rights reserved
+                </span>
+            </div>
+
+            <p class="copyright">
+                Tienda de scripts especializados.
+            </p>
         </div>
-    </header>
-    <main class="container">
-        <section class="products-section">
-            <h2 class="section-title rainbow-text">
-                <i class="fas fa-box-open"></i> Productos Disponibles
-            </h2>
-            <div class="carousel-container">
-                <div class="carousel-wrapper" id="carouselWrapper">
-                    <div class="no-products" id="noProductsMessage">
-                        <i class="fas fa-exclamation-circle"></i>
-                        <h3>Sin productos actualmente</h3>
-                        <p>Estamos actualizando nuestro catálogo.</p>
-                    </div>
-                </div>
-                <div class="carousel-nav" id="carouselNav">
-                    <button class="nav-btn" id="prevBtn">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div class="nav-dots" id="navDots"></div>
-                    <button class="nav-btn" id="nextBtn">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-        <section class="procedure-section">
-            <h2 class="procedure-title rainbow-text">
-                <i class="fas fa-shopping-cart"></i> Procedimiento de Compra
-            </h2>
-            <div class="procedure-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Selecciona el Producto</h3>
-                    <p class="step-description">Elige el script que necesitas.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">Haz clic en Comprar</h3>
-                    <p class="step-description">Compra por WhatsApp.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Confirmación</h3>
-                    <p class="step-description">Recibe instrucciones.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="separator"></div>
-                <div class="footer-logo">
-                    <i class="fas fa-cube"></i>
-                    <span class="powered-green">Powered by Carlos | 2026</span>
-                </div>
-                <p class="copyright">
-                    Tienda de scripts especializados.
-                </p>
-            </div>
-        </div>
-    </footer>
-    <!-- LOGO FIJO ABAJO -->
-    <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Logo" class="fixed-logo" id="fixedLogo">
-    <!-- TU SCRIPT ORIGINAL -->
-    <script src="script.js"></script>
-    <!-- 🎵 SINCRONIZACIÓN AUDIO -->
-    <script>
-        const audio = document.getElementById("audioPlayer");
-        const playBtn = document.getElementById("playPauseBtn");
-        const virus = document.querySelector(".virus-animado");
-        const hackerName = document.querySelector(".hacker-name");
-        if (audio && playBtn) {
-            playBtn.addEventListener("click", () => {
-                audio.paused ? audio.play() : audio.pause();
-            });
-            audio.addEventListener("play", () => {
-                if (virus) virus.style.animation = "virusBeat 0.6s infinite";
-                if (hackerName) hackerName.style.animation = "hackerGlow 1s infinite";
-            });
-            audio.addEventListener("pause", () => {
-                if (virus) virus.style.animation = "none";
-                if (hackerName) hackerName.style.animation = "none";
-            });
-        }
-    </script>
-    <!-- 🔹 VIBRACIÓN CLICK + TOUCH (SIN VIBRACIÓN VISUAL) -->
-    <script>
-        function vibrar(ms = 100) {
-            if (navigator.vibrate) navigator.vibrate(ms);
-        }
-        // Botones de compra
-        const comprarBtns = document.querySelectorAll('.buy-btn');
-        comprarBtns.forEach(btn => {
-            btn.addEventListener('click', () => vibrar(150));
-            btn.addEventListener('touchstart', () => vibrar(150));
-        });
-        // Carrusel: solo vibración real, visual eliminada
-        const carousel = document.getElementById('carouselWrapper');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        [prevBtn, nextBtn].forEach(btn => {
-            const vibrarCarrusel = () => vibrar(100);
-            btn.addEventListener('click', vibrarCarrusel);
-            btn.addEventListener('touchstart', vibrarCarrusel);
-        });
-        // Touch directamente sobre carrusel
-        carousel.addEventListener('touchstart', () => vibrar(100));
-        // 🔹 LOGO FIJO ABAJO - DESAPARECE AL CLIC Y VUELVE DESPUÉS DE 15 SEGUNDOS
-        const fixedLogo = document.getElementById('fixedLogo');
-        fixedLogo.addEventListener('click', () => {
-            fixedLogo.style.display = 'none';
-            setTimeout(() => {
-                fixedLogo.style.display = 'block';
-            }, 15000); // 15000 ms = 15 segundos
-        });
-        fixedLogo.addEventListener('touchstart', () => {
-            fixedLogo.style.display = 'none';
-            setTimeout(() => {
-                fixedLogo.style.display = 'block';
-            }, 15000);
-        });
-    </script>
+    </div>
+</footer>
+
+<img src="https://i.imgur.com/3AGErRG.jpeg" class="fixed-logo" id="fixedLogo">
+
+<script src="script.js"></script>
 </body>
 </html>
