@@ -39,12 +39,13 @@
             100% { opacity: 0.6; letter-spacing: 2px; }
         }
 
-        /* --------- FOOTER --------- */
+        /* --------- FOOTER ORIGINAL --------- */
         .footer-logo {
             position: relative;
             overflow: hidden;
             width: 100%;
             height: 24px;
+            text-align: center;
         }
         .powered-green {
             color: #00ff00;
@@ -53,14 +54,28 @@
             white-space: nowrap;
             position: absolute;
             animation: slideLeft 5s linear infinite;
-            font-family: "Courier New", monospace;
-            letter-spacing: 2px;
         }
         @keyframes slideLeft {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
 
+        /* 🔥 TERMINAL VERDE (SOLO PARA EL TEXTO NUEVO) */
+        .terminal-footer {
+            position: relative !important;
+            animation: none !important;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            background: rgba(0,0,0,0.85);
+            padding: 4px 10px;
+            border: 1px solid #00ff00;
+            border-radius: 4px;
+            box-shadow: 0 0 6px #00ff00, inset 0 0 6px #00ff00;
+        }
+
+        /* ---------------- LOGO FIJO ABAJO ---------------- */
         .fixed-logo {
             position: fixed;
             bottom: 20px;
@@ -102,34 +117,11 @@
 
 <div id="stars-container"></div>
 
-<!-- 🦠 VIRUS -->
 <div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
     <span class="virus-animado">🦠</span>
 </div>
 
-<!-- 💻 NOMBRE -->
 <div class="hacker-name">🦄드림가 Carlos</div>
-
-<!-- 🎵 REPRODUCTOR -->
-<div class="music-player" id="musicPlayer">
-    <div class="player-btn" id="togglePlayer">
-        <i class="fas fa-music"></i>
-    </div>
-    <div class="player-controls">
-        <button class="control-btn" id="prevBtnMusic">
-            <i class="fas fa-step-backward"></i>
-        </button>
-        <button class="control-btn" id="playPauseBtn">
-            <i class="fas fa-play"></i>
-        </button>
-        <button class="control-btn" id="nextBtnMusic">
-            <i class="fas fa-step-forward"></i>
-        </button>
-    </div>
-    <audio id="audioPlayer" loop>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
-</div>
 
 <header>
     <div class="container">
@@ -165,8 +157,7 @@
             <div class="separator"></div>
             <div class="footer-logo">
                 <i class="fas fa-cube"></i>
-                <!-- 🔥 TEXTO CAMBIADO (MISMA POSICIÓN) -->
-                <span class="powered-green" id="hackerFooter">
+                <span class="powered-green terminal-footer" id="hackerFooter">
                     Copyright © Carlos-Interative-2take1 All rights reserved 2026
                 </span>
             </div>
@@ -179,30 +170,35 @@
 
 <script src="script.js"></script>
 
-<!-- 🔥 EFECTO HACKER FOOTER -->
+<!-- 🔥 EFECTO TERMINAL (NO TOCA TUS SCRIPTS) -->
 <script>
 const footerText = document.getElementById("hackerFooter");
-const originalText = footerText.innerText;
-const chars = "!@#$%^&*()_+-=[]{}|;:,.<>?/0123456789";
+if (footerText) {
+    const originalText = footerText.innerText;
+    const chars = "█▓▒░<>_/\\|01";
 
-function hackerGlitch() {
-    let i = 0;
-    const interval = setInterval(() => {
-        footerText.innerText = originalText.split("").map((c, idx) =>
-            idx < i ? originalText[idx] : chars[Math.floor(Math.random()*chars.length)]
-        ).join("");
-        if (i >= originalText.length) clearInterval(interval);
-        i += 0.5;
-    }, 40);
+    function terminalEffect() {
+        let i = 0;
+        const interval = setInterval(() => {
+            footerText.innerText = originalText
+                .split("")
+                .map((c, idx) =>
+                    idx < i ? originalText[idx] : chars[Math.floor(Math.random()*chars.length)]
+                )
+                .join("");
+            if (i >= originalText.length) clearInterval(interval);
+            i += 0.7;
+        }, 50);
+    }
+
+    setInterval(() => {
+        footerText.style.opacity = "0";
+        setTimeout(() => {
+            footerText.style.opacity = "1";
+            terminalEffect();
+        }, 800);
+    }, 6500);
 }
-
-setInterval(() => {
-    footerText.style.opacity = "0";
-    setTimeout(() => {
-        footerText.style.opacity = "1";
-        hackerGlitch();
-    }, 1000);
-}, 6000);
 </script>
 
 </body>
