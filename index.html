@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <!-- 🦠 ESTILOS HACKER -->
     <style>
         .virus-animado {
             display: inline-block;
@@ -37,8 +37,7 @@
             50% { opacity: 1; letter-spacing: 6px; }
             100% { opacity: 0.6; letter-spacing: 2px; }
         }
-
-        /* FOOTER ORIGINAL */
+        /* --------- FOOTER ANIMADO CORRECTO --------- */
         .footer-logo {
             position: relative;
             overflow: hidden;
@@ -57,95 +56,102 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
-
-        /* 🔒 BLOQUEO DE MOVIMIENTO SOLO EN FOOTER */
-        .footer-logo .powered-green{
-            animation: none !important;
-            position: relative !important;
-            transform: none !important;
-            font-family: "Courier New", monospace;
-        }
-
+        /* ---------------- LOGO FIJO ABAJO ---------------- */
         .fixed-logo {
             position: fixed;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             width: 150px;
+            height: auto;
             z-index: 9999;
             animation: floatUpDown 3s ease-in-out infinite;
             filter: drop-shadow(0 0 12px #00ff00);
         }
         @keyframes floatUpDown {
-            0%,100% { transform: translateX(-50%) translateY(0); }
+            0%, 100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(-10px); }
         }
 
-        .step,.no-products,.carousel-wrapper>div{
-            border:2px solid #800080;
-            border-radius:12px;
-            padding:12px;
-            box-shadow:0 0 8px #80008050
+        /* ---------- BORDES PÚRPURA ---------- */
+        .step, 
+        .no-products, 
+        .carousel-wrapper > div {
+            border: 2px solid #800080;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 0 8px #80008050;
         }
 
-        .rainbow-text{
-            background:linear-gradient(90deg,#ff0000,#ff9900,#ffff00,#00ff00,#00ffff,#0000ff,#9900ff);
-            background-size:400% 100%;
-            -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;
-            animation:rainbowMove 8s linear infinite
+        /* ----------- ARCOÍRIS ----------- */
+        .rainbow-text {
+            background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #9900ff);
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowMove 8s linear infinite;
         }
-        @keyframes rainbowMove{
-            0%{background-position:0% 50%}
-            50%{background-position:100% 50%}
-            100%{background-position:0% 50%}
+        @keyframes rainbowMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 🔒 FIX FINAL — NO DESPLAZAMIENTO FOOTER */
+        .footer-logo .powered-green{
+            animation: none !important;
+            position: relative !important;
+            transform: none !important;
+            font-family: "Courier New", monospace;
         }
     </style>
 </head>
 
 <body>
+    <div id="stars-container"></div>
 
-<div id="stars-container"></div>
-
-<div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
-    <span class="virus-animado">🦠</span>
-</div>
-
-<div class="hacker-name">🦄드림가 Carlos</div>
-
-<header>
-    <div class="container">
-        <div class="logo">
-            <i class="fas fa-code logo-icon"></i>
-            <h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
-        </div>
-        <p class="tagline">Scripts premium y herramientas de automatización 🦠</p>
-        <div class="separator"></div>
+    <div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
+        <span class="virus-animado">🦠</span>
     </div>
-</header>
 
-<main class="container">
-    <!-- contenido intacto -->
-</main>
+    <div class="hacker-name">🦄드림가 Carlos</div>
 
-<footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="separator"></div>
-            <div class="footer-logo">
-                <i class="fas fa-cube"></i>
-                <span class="powered-green">
-                    Copyright © Carlos-Interative-2take1 All rights reserved 2026
-                </span>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-code logo-icon"></i>
+                <h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
             </div>
-            <p class="copyright">Tienda de scripts especializados.</p>
+            <p class="tagline">
+                Scripts premium y herramientas de automatización 🦠
+            </p>
+            <div class="separator"></div>
         </div>
-    </div>
-</footer>
+    </header>
 
-<img src="https://i.imgur.com/3AGErRG.jpeg" class="fixed-logo" id="fixedLogo">
+    <main class="container">
+        <!-- TODO TU CONTENIDO ORIGINAL -->
+    </main>
 
-<script src="script.js"></script>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="separator"></div>
+                <div class="footer-logo">
+                    <i class="fas fa-cube"></i>
+                    <span class="powered-green">
+                        Copyright © Carlos-Interative-2take1 All rights reserved 2026
+                    </span>
+                </div>
+                <p class="copyright">
+                    Tienda de scripts especializados.
+                </p>
+            </div>
+        </div>
+    </footer>
 
+    <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Logo" class="fixed-logo" id="fixedLogo">
+
+    <script src="script.js"></script>
 </body>
 </html>
