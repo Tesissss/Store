@@ -83,47 +83,23 @@
             box-shadow: 0 0 8px #80008050; /* sombra ligera púrpura */
         }
 
-        /* ---------- ESTRELLAS ARCOÍRIS DE FONDO ---------- */
-        #stars-container {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .star {
-            position: absolute;
-            border-radius: 50%;
-            width: 2px;
-            height: 2px;
-            background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
-            animation: floatStars linear infinite;
-            opacity: 0.8;
-        }
-        @keyframes floatStars {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(-1000px) translateX(50px); opacity: 0; }
+        /* ----------- ARCOÍRIS PARA TÍTULOS ----------- */
+        .rainbow-text {
+            background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #9900ff);
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowMove 8s linear infinite;
         }
 
-        /* ---------- LOGO ARCOÍRIS ---------- */
-        .logo .logo-icon {
-            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-            -webkit-background-clip: text;
-            color: transparent;
-            animation: rainbowText 6s linear infinite;
-        }
-        @keyframes rainbowText {
-            0%, 100% { background-position: 0% 50%; }
+        @keyframes rainbowMove {
+            0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
     </style>
 </head>
 <body>
-    <!-- ESTRELLAS -->
     <div id="stars-container"></div>
     <!-- 🦠 VIRUS -->
     <div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
@@ -165,7 +141,7 @@
     </header>
     <main class="container">
         <section class="products-section">
-            <h2 class="section-title">
+            <h2 class="section-title rainbow-text">
                 <i class="fas fa-box-open"></i> Productos Disponibles
             </h2>
             <div class="carousel-container">
@@ -188,7 +164,7 @@
             </div>
         </section>
         <section class="procedure-section">
-            <h2 class="procedure-title">
+            <h2 class="procedure-title rainbow-text">
                 <i class="fas fa-shopping-cart"></i> Procedimiento de Compra
             </h2>
             <div class="procedure-steps">
@@ -284,20 +260,6 @@
                 fixedLogo.style.display = 'block';
             }, 15000);
         });
-
-        // ---------- GENERAR ESTRELLAS DINÁMICAS ----------
-        const starsContainer = document.getElementById('stars-container');
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-            star.style.top = Math.random() * 100 + '%';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.width = (1 + Math.random() * 2) + 'px';
-            star.style.height = star.style.width;
-            star.style.animationDuration = (5 + Math.random() * 5) + 's';
-            star.style.animationDelay = (Math.random() * 5) + 's';
-            starsContainer.appendChild(star);
-        }
     </script>
 </body>
 </html>
