@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- 🦠 ESTILOS HACKER + PERSONALIZADOS -->
+    <!-- 🦠 ESTILOS HACKER -->
     <style>
         .virus-animado {
             display: inline-block;
@@ -37,12 +37,12 @@
             50% { opacity: 1; letter-spacing: 6px; }
             100% { opacity: 0.6; letter-spacing: 2px; }
         }
-        /* --------- FOOTER ANIMADO --------- */
+        /* --------- FOOTER ANIMADO CORRECTO --------- */
         .footer-logo {
             position: relative;
             overflow: hidden;
             width: 100%;
-            height: 24px;
+            height: 24px; /* ajusta si quieres más grande */
         }
         .powered-green {
             color: #00ff00; /* verde intenso */
@@ -59,36 +59,31 @@
         /* ---------------- LOGO FIJO ABAJO ---------------- */
         .fixed-logo {
             position: fixed;
-            bottom: 20px;
+            bottom: 20px; /* distancia desde el pie de la pantalla */
             left: 50%;
             transform: translateX(-50%);
-            width: 150px;
+            width: 150px; /* tamaño del logo */
             height: auto;
             z-index: 9999;
             animation: floatUpDown 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 12px #00ff00);
+            filter: drop-shadow(0 0 12px #00ff00); /* neón verde */
         }
         @keyframes floatUpDown {
             0%, 100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(-10px); }
         }
-        /* ----------------- PERSONALIZACIONES ----------------- */
-        /* Bordes púrpura de cuadros */
-        .procedure-steps .step,
-        .carousel-wrapper .no-products {
-            border: 2px solid #9b59b6; /* 🍆 contorno púrpura */
-            padding: 10px;
-            border-radius: 8px;
+
+        /* ---------- BORDES PÚRPURA 🍆 PARA CUADROS ---------- */
+        .step, 
+        .no-products, 
+        .carousel-wrapper > div {
+            border: 2px solid #800080; /* borde púrpura 🍆 */
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 0 8px #80008050; /* sombra ligera púrpura */
         }
-        /* Palabras neon que me dijiste */
-        .procedure-title,
-        .section-title,
-        .step-title,
-        .step-description {
-            color: #00ff00;
-            text-shadow: 0 0 3px #00ff00; /* menos brillante */
-        }
-        /* Arcoíris como TIENDA DE SCRIPTS */
+
+        /* ----------- ARCOÍRIS PARA TÍTULOS ----------- */
         .rainbow-text {
             background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #9900ff);
             -webkit-background-clip: text;
@@ -226,16 +221,18 @@
             });
         }
     </script>
-    <!-- 🔹 VIBRACIÓN CLICK + TOUCH -->
+    <!-- 🔹 VIBRACIÓN CLICK + TOUCH (SIN VIBRACIÓN VISUAL) -->
     <script>
         function vibrar(ms = 100) {
             if (navigator.vibrate) navigator.vibrate(ms);
         }
+        // Botones de compra
         const comprarBtns = document.querySelectorAll('.buy-btn');
         comprarBtns.forEach(btn => {
             btn.addEventListener('click', () => vibrar(150));
             btn.addEventListener('touchstart', () => vibrar(150));
         });
+        // Carrusel: solo vibración real, visual eliminada
         const carousel = document.getElementById('carouselWrapper');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
@@ -244,15 +241,21 @@
             btn.addEventListener('click', vibrarCarrusel);
             btn.addEventListener('touchstart', vibrarCarrusel);
         });
+        // Touch directamente sobre carrusel
         carousel.addEventListener('touchstart', () => vibrar(100));
+        // 🔹 LOGO FIJO ABAJO - DESAPARECE AL CLIC Y VUELVE DESPUÉS DE 15 SEGUNDOS
         const fixedLogo = document.getElementById('fixedLogo');
         fixedLogo.addEventListener('click', () => {
             fixedLogo.style.display = 'none';
-            setTimeout(() => { fixedLogo.style.display = 'block'; }, 15000);
+            setTimeout(() => {
+                fixedLogo.style.display = 'block';
+            }, 15000); // 15000 ms = 15 segundos
         });
         fixedLogo.addEventListener('touchstart', () => {
             fixedLogo.style.display = 'none';
-            setTimeout(() => { fixedLogo.style.display = 'block'; }, 15000);
+            setTimeout(() => {
+                fixedLogo.style.display = 'block';
+            }, 15000);
         });
     </script>
 </body>
