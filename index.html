@@ -9,87 +9,143 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* === TODO TU CSS ORIGINAL === */
-        .virus-animado { display:inline-block; animation:none; filter:drop-shadow(0 0 6px #00ff99); }
-        @keyframes virusBeat { 0%{transform:scale(1);}50%{transform:scale(1.3) rotate(5deg);}100%{transform:scale(1);} }
-        .hacker-name {
-            position:fixed; top:60px; right:15px;
-            font-family:'Courier New', monospace;
-            font-size:18px; color:#00ff99;
-            letter-spacing:4px;
-            text-shadow:0 0 6px #00ff99;
-            animation:none; z-index:9999; white-space:nowrap;
+        .virus-animado {
+            display: inline-block;
+            animation: none;
+            filter: drop-shadow(0 0 6px #00ff99);
         }
-        @keyframes hackerGlow { 0%{opacity:.6;}50%{opacity:1;}100%{opacity:.6;} }
+        @keyframes virusBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3) rotate(5deg); }
+            100% { transform: scale(1); }
+        }
+        .hacker-name {
+            position: fixed;
+            top: 60px;
+            right: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            color: #00ff99;
+            letter-spacing: 4px;
+            text-shadow: 0 0 6px #00ff99;
+            animation: none;
+            z-index: 9999;
+            white-space: nowrap;
+        }
+        @keyframes hackerGlow {
+            0% { opacity: 0.6; letter-spacing: 2px; }
+            50% { opacity: 1; letter-spacing: 6px; }
+            100% { opacity: 0.6; letter-spacing: 2px; }
+        }
 
-        .footer-logo { position:relative; overflow:hidden; width:100%; height:28px; }
-
-        /* 🔥 TEXTO FOOTER MODIFICADO (NO SE MUEVE) */
+        /* FOOTER ORIGINAL */
+        .footer-logo {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 24px;
+        }
         .powered-green {
-            color:#00ff00;
-            text-shadow:0 0 6px #00ff00;
-            font-family:"Courier New", monospace;
-            white-space:nowrap;
-            position:absolute;
-            left:50%;
-            transform:translateX(-50%);
-            animation:none; /* ⛔ mata el slide */
+            color: #00ff00;
+            text-shadow: 0 0 6px #00ff00;
+            display: inline-block;
+            white-space: nowrap;
+            position: absolute;
+            animation: slideLeft 5s linear infinite;
+        }
+        @keyframes slideLeft {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* 🔒 BLOQUEO DE MOVIMIENTO SOLO EN FOOTER */
+        .footer-logo .powered-green{
+            animation: none !important;
+            position: relative !important;
+            transform: none !important;
+            font-family: "Courier New", monospace;
+        }
+
+        .fixed-logo {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            z-index: 9999;
+            animation: floatUpDown 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 12px #00ff00);
+        }
+        @keyframes floatUpDown {
+            0%,100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .step,.no-products,.carousel-wrapper>div{
+            border:2px solid #800080;
+            border-radius:12px;
+            padding:12px;
+            box-shadow:0 0 8px #80008050
+        }
+
+        .rainbow-text{
+            background:linear-gradient(90deg,#ff0000,#ff9900,#ffff00,#00ff00,#00ffff,#0000ff,#9900ff);
+            background-size:400% 100%;
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            animation:rainbowMove 8s linear infinite
+        }
+        @keyframes rainbowMove{
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
         }
     </style>
 </head>
 
 <body>
-    <!-- TODO TU BODY ORIGINAL SIN CAMBIOS -->
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="separator"></div>
+<div id="stars-container"></div>
 
-                <div class="footer-logo">
-                    <i class="fas fa-cube"></i>
+<div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
+    <span class="virus-animado">🦠</span>
+</div>
 
-                    <!-- ✅ TEXTO CAMBIADO, MISMA POSICIÓN -->
-                    <span class="powered-green" id="hackerFooter">
-Copyright © Carlos-Interative-2take1 All rights reserved 2026
-                    </span>
-                </div>
+<div class="hacker-name">🦄드림가 Carlos</div>
 
-                <p class="copyright">
-                    Tienda de scripts especializados.
-                </p>
-            </div>
+<header>
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-code logo-icon"></i>
+            <h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
         </div>
-    </footer>
+        <p class="tagline">Scripts premium y herramientas de automatización 🦠</p>
+        <div class="separator"></div>
+    </div>
+</header>
 
-    <script src="script.js"></script>
+<main class="container">
+    <!-- contenido intacto -->
+</main>
 
-    <!-- 🟢 EFECTO HACKER (AISLADO SOLO AL FOOTER) -->
-    <script>
-        const footer = document.getElementById("hackerFooter");
-        if (footer) {
-            const original = footer.innerText;
-            const chars = "01█▓▒░<>_";
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="separator"></div>
+            <div class="footer-logo">
+                <i class="fas fa-cube"></i>
+                <span class="powered-green">
+                    Copyright © Carlos-Interative-2take1 All rights reserved 2026
+                </span>
+            </div>
+            <p class="copyright">Tienda de scripts especializados.</p>
+        </div>
+    </div>
+</footer>
 
-            setInterval(() => {
-                footer.style.opacity = "0";
-                setTimeout(() => {
-                    footer.style.opacity = "1";
-                    let i = 0;
-                    const glitch = setInterval(() => {
-                        footer.innerText = original
-                            .split("")
-                            .map((c, idx) => idx < i ? original[idx] : chars[Math.floor(Math.random()*chars.length)])
-                            .join("");
-                        i++;
-                        if (i > original.length) {
-                            clearInterval(glitch);
-                            footer.innerText = original;
-                        }
-                    }, 40);
-                }, 600);
-            }, 6000);
-        }
-    </script>
+<img src="https://i.imgur.com/3AGErRG.jpeg" class="fixed-logo" id="fixedLogo">
+
+<script src="script.js"></script>
+
 </body>
 </html>
