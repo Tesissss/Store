@@ -10,30 +10,58 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ===== TODO TU DISEÑO ORIGINAL ===== */
-.virus-animado{display:inline-block;animation:none;filter:drop-shadow(0 0 6px #00ff99)}
-@keyframes virusBeat{0%{transform:scale(1)}50%{transform:scale(1.3) rotate(5deg)}100%{transform:scale(1)}}
-.hacker-name{position:fixed;top:60px;right:15px;font-family:'Courier New',monospace;font-size:18px;color:#00ff99;letter-spacing:4px;text-shadow:0 0 6px #00ff99;z-index:9999}
-@keyframes hackerGlow{0%{opacity:.6}50%{opacity:1}100%{opacity:.6}}
+/* ===== DISEÑO ORIGINAL ===== */
+.virus-animado {
+  display: inline-block;
+  animation: none;
+  filter: drop-shadow(0 0 6px #00ff99);
+}
+@keyframes virusBeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3) rotate(5deg); }
+  100% { transform: scale(1); }
+}
+.hacker-name {
+  position: fixed;
+  top: 60px;
+  right: 15px;
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  color: #00ff99;
+  letter-spacing: 4px;
+  text-shadow: 0 0 6px #00ff99;
+  z-index: 9999;
+  white-space: nowrap;
+}
+@keyframes hackerGlow {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
 
-.footer-logo{position:relative;overflow:hidden;width:100%;height:40px}
+.footer-logo {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 55px; /* ⬅️ un poco más alto */
+}
 
-/* ===== NUEVO SVG TERMINAL (SOLO FOOTER) ===== */
+/* ===== SVG TERMINAL FOOTER ===== */
 .terminal-svg {
   width: 100%;
-  height: 40px;
+  height: 55px;
 }
 
 .terminal-text {
   fill: none;
   stroke: #00ff99;
-  stroke-width: 1.2;
+  stroke-width: 1.4;
   font-family: "Courier New", monospace;
-  font-size: 14px;
-  letter-spacing: 1.5px;
-  stroke-dasharray: 180;
-  stroke-dashoffset: 180;
-  animation: drawText 6s linear infinite, glow 2s ease-in-out infinite;
+  font-size: 18px; /* ⬅️ MÁS GRANDE */
+  letter-spacing: 1.8px;
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation: drawText 6s linear infinite, glow 2.5s ease-in-out infinite;
 }
 
 @keyframes drawText {
@@ -41,47 +69,61 @@
 }
 
 @keyframes glow {
-  0%,100% { filter: drop-shadow(0 0 2px #00ff99); opacity:.7 }
-  50% { filter: drop-shadow(0 0 6px #00ff99); opacity:1 }
+  0%,100% {
+    filter: drop-shadow(0 0 2px #00ff99);
+    opacity: .75;
+  }
+  50% {
+    filter: drop-shadow(0 0 7px #00ff99);
+    opacity: 1;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- TODO TU HTML ORIGINAL NO TOCADO -->
+<div id="stars-container"></div>
+
+<div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
+  <span class="virus-animado">🦠</span>
+</div>
+
+<div class="hacker-name">🦄드림가 Carlos</div>
+
 <header>
-<div class="container">
-<div class="logo">
-<i class="fas fa-code"></i>
-<h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
-</div>
-</div>
+  <div class="container">
+    <div class="logo">
+      <i class="fas fa-code"></i>
+      <h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
+    </div>
+    <p class="tagline">Scripts premium y herramientas de automatización 🦠</p>
+    <div class="separator"></div>
+  </div>
 </header>
 
 <main class="container">
-<!-- contenido intacto -->
+  <!-- TODO TU CONTENIDO ORIGINAL -->
 </main>
 
 <footer>
-<div class="container">
-<div class="footer-content">
-<div class="separator"></div>
+  <div class="container">
+    <div class="footer-content">
+      <div class="separator"></div>
 
-<div class="footer-logo">
-<svg class="terminal-svg" viewBox="0 0 900 40" preserveAspectRatio="xMidYMid meet">
-<text x="50%" y="55%" text-anchor="middle" class="terminal-text">
-Copyright © 2026 Carlos-Interative-2take1 All rights reserved
-</text>
-</svg>
-</div>
+      <div class="footer-logo">
+        <svg class="terminal-svg" viewBox="0 0 1000 55" preserveAspectRatio="xMidYMid meet">
+          <text x="50%" y="65%" text-anchor="middle" class="terminal-text">
+            Copyright © 2026 Carlos-Interative-2take1 All rights reserved
+          </text>
+        </svg>
+      </div>
 
-<p class="copyright">
-Tienda de scripts especializados.
-</p>
-
-</div>
-</div>
+      <p class="copyright">
+        Tienda de scripts especializados.
+      </p>
+    </div>
+  </div>
 </footer>
 
 <script src="script.js"></script>
