@@ -1,158 +1,403 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tienda de Scripts | Productos Premium</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Scripts | Productos Premium</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 🦠 ESTILOS HACKER -->
+    <style>
+        .virus-animado {
+            display: inline-block;
+            animation: none;
+            filter: drop-shadow(0 0 6px #00ff99);
+        }
+        @keyframes virusBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3) rotate(5deg); }
+            100% { transform: scale(1); }
+        }
+        .hacker-name {
+            position: fixed;
+            top: 60px;
+            right: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            color: #00ff99;
+            letter-spacing: 4px;
+            text-shadow: 0 0 6px #00ff99;
+            animation: none;
+            z-index: 9999;
+            white-space: nowrap;
+        }
+        @keyframes hackerGlow {
+            0% { opacity: 0.6; letter-spacing: 2px; }
+            50% { opacity: 1; letter-spacing: 6px; }
+            100% { opacity: 0.6; letter-spacing: 2px; }
+        }
+        /* --------- FOOTER ANIMADO CORRECTO --------- */
+        .footer-logo {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 24px; /* ajusta si quieres más grande */
+        }
+        .powered-green {
+            color: #00ff00; /* verde intenso */
+            text-shadow: 0 0 6px #00ff00;
+            display: inline-block;
+            white-space: nowrap;
+            position: absolute;
+            animation: slideLeft 5s linear infinite;
+        }
+        @keyframes slideLeft {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
 
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+        /* ---------------- LOGO ABAJO (YA NO ES FIJO) ---------------- */
+        .fixed-logo {
+            /* position: fixed;  ❌ QUITADO PARA QUE NO SEA FIJO */
+            display: block;
+            margin: 40px auto; /* centrado normal */
+            width: 150px; /* tamaño del logo */
+            height: auto;
+            z-index: 9999;
+            animation: floatUpDown 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 12px #00ff00); /* neón verde */
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
 
-<style>
-/* ===== TODO TU CSS ORIGINAL (SIN TOCAR) ===== */
-.virus-animado{display:inline-block;animation:none;filter:drop-shadow(0 0 6px #00ff99)}
-@keyframes virusBeat{0%{transform:scale(1)}50%{transform:scale(1.3) rotate(5deg)}100%{transform:scale(1)}}
+        /* ---------- BORDES PÚRPURA 🍆 PARA CUADROS ---------- */
+        .step, 
+        .no-products, 
+        .carousel-wrapper > div {
+            border: 2px solid #800080; /* borde púrpura 🍆 */
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 0 8px #80008050; /* sombra ligera púrpura */
+        }
 
-.hacker-name{position:fixed;top:60px;right:15px;font-family:'Courier New',monospace;font-size:18px;color:#00ff99;letter-spacing:4px;text-shadow:0 0 6px #00ff99;z-index:9999;white-space:nowrap}
+        /* ----------- ARCOÍRIS PARA TÍTULOS ----------- */
+        .rainbow-text {
+            background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00ff00, #00ffff, #0000ff, #9900ff);
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowMove 8s linear infinite;
+        }
 
-.footer-logo{position:relative;overflow:hidden;width:100%;height:48px}
+        @keyframes rainbowMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-.terminal-svg{width:100%;height:48px;display:block}
+        /* =======================================================
+           ✅ NUEVO: SVG TERMINAL (NO SE DESPLAZA, ESTILO TERMINAL)
+           ======================================================= */
+        .footer-logo {
+            height: 48px; /* ✅ MÁS ALTO para que se vea grande y NO se corte */
+        }
 
-.terminal-text{
-fill:none;
-stroke:#00ff99;
-stroke-width:1.9;
-font-family:"Courier New",monospace;
-font-size:26px;
-letter-spacing:2px;
-stroke-dasharray:520;
-stroke-dashoffset:520;
-animation:terminalDraw 6s linear infinite,terminalGlow 2s ease-in-out infinite;
-}
+        .terminal-svg {
+            width: 100%;
+            height: 48px; /* ✅ MÁS ALTO */
+            display: block;
+        }
 
-@keyframes terminalDraw{to{stroke-dashoffset:0}}
-@keyframes terminalGlow{0%,100%{opacity:.6}50%{opacity:1}}
+        .terminal-text {
+            fill: none;
+            stroke: #00ff99;
+            stroke-width: 1.9;   /* ⬆️ un poco más grueso */
+            font-family: "Courier New", monospace;
+            font-size: 26px;     /* ⬆️ un poco más grande */
+            letter-spacing: 2px;
+            stroke-dasharray: 520;
+            stroke-dashoffset: 520;
+            animation: terminalDraw 6s linear infinite, terminalGlow 2s ease-in-out infinite;
+        }
 
-.fixed-logo{
-position:fixed;
-bottom:20px;
-left:50%;
-transform:translateX(-50%);
-width:150px;
-z-index:9999;
-animation:floatUpDown 3s ease-in-out infinite;
-filter:drop-shadow(0 0 12px #00ff00);
-cursor:pointer;
-}
+        @keyframes terminalDraw {
+            to { stroke-dashoffset: 0; }
+        }
 
-@keyframes floatUpDown{
-0%,100%{transform:translateX(-50%) translateY(0)}
-50%{transform:translateX(-50%) translateY(-10px)}
-}
+        @keyframes terminalGlow {
+            0%,100% { opacity: .6; filter: drop-shadow(0 0 2px #00ff99); }
+            50% { opacity: 1; filter: drop-shadow(0 0 8px #00ff99); }
+        }
 
-header{position:relative;overflow:hidden}
-header::before{
-content:"";
-position:absolute;
-inset:0;
-background-image:url("https://i.imgur.com/cmleSPE.jpeg");
-background-repeat:no-repeat;
-background-position:center 55%;
-background-size:420px auto;
-opacity:.22;
-pointer-events:none;
-animation:watermarkWaves 5s ease-in-out infinite;
-}
+        /* =======================================================
+           ✅ NUEVO: WATERMARK EN HEADER (NO BORRA NADA)
+           ✅ + EFECTO OLAS (SOLO LA IMAGEN DE MARCA DE AGUA)
+           ======================================================= */
+        header {
+            position: relative;
+            overflow: hidden;
+        }
 
-@keyframes watermarkWaves{
-0%{transform:translateY(0) scale(1)}
-50%{transform:translateY(-2px) scale(1.02)}
-100%{transform:translateY(0) scale(1)}
-}
+        /* ✅ NUEVO: animación olas */
+        @keyframes watermarkWaves {
+            0% {
+                background-position: 50% 55%;
+                transform: translateY(0px) scale(1);
+            }
+            25% {
+                background-position: 49% 56%;
+                transform: translateY(-1px) scale(1.01);
+            }
+            50% {
+                background-position: 51% 54%;
+                transform: translateY(0px) scale(1.02);
+            }
+            75% {
+                background-position: 50% 56%;
+                transform: translateY(1px) scale(1.01);
+            }
+            100% {
+                background-position: 50% 55%;
+                transform: translateY(0px) scale(1);
+            }
+        }
 
-header .container{position:relative;z-index:2}
-</style>
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("https://i.imgur.com/cmleSPE.jpeg");
+            background-repeat: no-repeat;
+            background-position: center 55%;
+            background-size: 420px auto; /* ✅ tamaño (más grande) */
+            opacity: 0.22;               /* ✅ intensidad */
+            pointer-events: none;
+            z-index: 0;
+
+            /* ✅ NUEVO: olas */
+            animation: watermarkWaves 5s ease-in-out infinite;
+            will-change: transform, background-position;
+
+            /* ✅ opcional: glow suave (si no lo quieres, lo quito) */
+            filter: drop-shadow(0 0 10px rgba(0,255,153,0.25));
+        }
+
+        header .container {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
 </head>
-
 <body>
+    <div id="stars-container"></div>
+    <!-- 🦠 VIRUS -->
+    <div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
+        <span class="virus-animado">🦠</span>
+    </div>
+    <!-- 💻 NOMBRE -->
+    <div class="hacker-name">🦄드림가 Carlos</div>
+    <!-- 🎵 REPRODUCTOR -->
+    <div class="music-player" id="musicPlayer">
+        <div class="player-btn" id="togglePlayer">
+            <i class="fas fa-music"></i>
+        </div>
+        <div class="player-controls">
+            <button class="control-btn" id="prevBtnMusic">
+                <i class="fas fa-step-backward"></i>
+            </button>
+            <button class="control-btn" id="playPauseBtn">
+                <i class="fas fa-play"></i>
+            </button>
+            <button class="control-btn" id="nextBtnMusic">
+                <i class="fas fa-step-forward"></i>
+            </button>
+        </div>
+        <audio id="audioPlayer" loop>
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-code logo-icon"></i>
+                <h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
+            </div>
+            <p class="tagline">
+                Scripts premium y herramientas de automatización 🦠
+            </p>
+            <div class="separator"></div>
+        </div>
+    </header>
+    <main class="container">
+        <section class="products-section">
+            <h2 class="section-title rainbow-text">
+                <i class="fas fa-box-open"></i> Productos Disponibles
+            </h2>
+            <div class="carousel-container">
+                <div class="carousel-wrapper" id="carouselWrapper">
+                    <div class="no-products" id="noProductsMessage">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h3>Sin productos actualmente</h3>
+                        <p>Estamos actualizando nuestro catálogo.</p>
+                    </div>
+                </div>
+                <div class="carousel-nav" id="carouselNav">
+                    <button class="nav-btn" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="nav-dots" id="navDots"></div>
+                    <button class="nav-btn" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="procedure-section">
+            <h2 class="procedure-title rainbow-text">
+                <i class="fas fa-shopping-cart"></i> Procedimiento de Compra
+            </h2>
+            <div class="procedure-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Selecciona el Producto</h3>
+                    <p class="step-description">Elige el script que necesitas.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Haz clic en Comprar</h3>
+                    <p class="step-description">Compra por WhatsApp.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Confirmación</h3>
+                    <p class="step-description">Recibe instrucciones.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="separator"></div>
+                <div class="footer-logo">
+                    <i class="fas fa-cube"></i>
 
-<div id="stars-container"></div>
-
-<div style="position:fixed;top:15px;right:15px;font-size:32px;z-index:9999;">
-<span class="virus-animado">🦠</span>
-</div>
-
-<div class="hacker-name">🦄드림가 Carlos</div>
-
-<header>
-<div class="container">
-<div class="logo">
-<i class="fas fa-code"></i>
-<h1 class="rainbow-text">TIENDA DE SCRIPTS</h1>
-</div>
-<p class="tagline">Scripts premium y herramientas de automatización 🦠</p>
-</div>
-</header>
-
-<main class="container">
-<!-- TODO TU CONTENIDO ORIGINAL -->
-</main>
-
-<footer>
-<div class="container">
-<div class="footer-content">
-<div class="footer-logo">
-<svg class="terminal-svg" viewBox="0 0 1200 40">
-<text x="50%" y="55%" text-anchor="middle" class="terminal-text">
+                    <svg class="terminal-svg" viewBox="0 0 1200 40" preserveAspectRatio="xMidYMid meet">
+                        <text x="50%" y="55%" text-anchor="middle" class="terminal-text">
 Copyright © 2026 Carlos-Interative-2take1 All rights reserved
-</text>
-</svg>
-</div>
-<p>Tienda de scripts especializados.</p>
-</div>
-</div>
-</footer>
+                        </text>
+                    </svg>
 
-<!-- LOGO FIJO -->
-<img src="https://i.imgur.com/3AGErRG.jpeg" class="fixed-logo" id="fixedLogo">
+                </div>
+                <p class="copyright">
+                    Tienda de scripts especializados.
+                </p>
+            </div>
+        </div>
+    </footer>
 
-<script src="script.js"></script>
+    <!-- LOGO ABAJO (YA NO ES FIJO) -->
+    <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Logo" class="fixed-logo" id="fixedLogo">
 
-<!-- =====================================================
-     🔥 VIBRACIÓN REAL + DESAPARECER LOGO (ANDROID)
-     NO ELIMINA NADA
-     ===================================================== -->
-<script>
-function vibrar(ms=150){
- if(navigator.vibrate) navigator.vibrate(ms);
-}
+    <!-- TU SCRIPT ORIGINAL -->
+    <script src="script.js"></script>
 
-const fixedLogo=document.getElementById("fixedLogo");
-let bloqueado=false;
+    <!-- 🎵 SINCRONIZACIÓN AUDIO -->
+    <script>
+        const audio = document.getElementById("audioPlayer");
+        const playBtn = document.getElementById("playPauseBtn");
+        const virus = document.querySelector(".virus-animado");
+        const hackerName = document.querySelector(".hacker-name");
+        if (audio && playBtn) {
+            playBtn.addEventListener("click", () => {
+                audio.paused ? audio.play() : audio.pause();
+            });
+            audio.addEventListener("play", () => {
+                if (virus) virus.style.animation = "virusBeat 0.6s infinite";
+                if (hackerName) hackerName.style.animation = "hackerGlow 1s infinite";
+            });
+            audio.addEventListener("pause", () => {
+                if (virus) virus.style.animation = "none";
+                if (hackerName) hackerName.style.animation = "none";
+            });
+        }
+    </script>
 
-function accionLogo(){
- if(bloqueado) return;
- bloqueado=true;
+    <!-- 🔹 VIBRACIÓN CLICK + TOUCH (SIN VIBRACIÓN VISUAL) -->
+    <script>
+        function vibrar(ms = 100) {
+            if (navigator.vibrate) navigator.vibrate(ms);
+        }
 
- vibrar(200);
- fixedLogo.style.display="none";
+        // Botones de compra
+        const comprarBtns = document.querySelectorAll('.buy-btn');
+        comprarBtns.forEach(btn => {
+            btn.addEventListener('click', () => vibrar(150));
+            btn.addEventListener('touchstart', () => vibrar(150));
+        });
 
- setTimeout(()=>{
-   fixedLogo.style.display="block";
-   vibrar(80);
-   bloqueado=false;
- },15000);
-}
+        // Carrusel: vibración real
+        const carousel = document.getElementById('carouselWrapper');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
 
-fixedLogo.addEventListener("touchstart",function(e){
- e.preventDefault();
- accionLogo();
-},{passive:false});
+        [prevBtn, nextBtn].forEach(btn => {
+            const vibrarCarrusel = () => vibrar(100);
+            btn.addEventListener('click', vibrarCarrusel);
+            btn.addEventListener('touchstart', vibrarCarrusel);
+        });
 
-fixedLogo.addEventListener("click",accionLogo);
-</script>
+        // Touch directamente sobre carrusel
+        carousel.addEventListener('touchstart', () => vibrar(100));
 
+        // ✅✅✅ VIBRACIÓN REAL AL ARRASTRAR (DRAG) EL CARRUSEL EN ANDROID
+        let isDragging = false;
+        let lastVibe = 0;
+
+        carousel.addEventListener('touchstart', () => {
+            isDragging = true;
+        }, { passive: true });
+
+        window.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+
+        carousel.addEventListener('touchmove', () => {
+            if (!isDragging) return;
+            const now = Date.now();
+            if (now - lastVibe > 120) { // cooldown
+                vibrar(35);
+                lastVibe = now;
+            }
+        }, { passive: true });
+        // ✅✅✅ FIN DRAG VIBE
+
+        // ✅✅✅ LOGO ABAJO: VIBRA + DESAPARECE + VUELVE EN 15s (ANDROID OK)
+        const fixedLogo = document.getElementById('fixedLogo');
+        let logoTimeout = null;
+
+        function ocultarLogo() {
+            vibrar(120);
+            fixedLogo.style.display = 'none';
+
+            clearTimeout(logoTimeout);
+            logoTimeout = setTimeout(() => {
+                fixedLogo.style.display = 'block';
+            }, 15000);
+        }
+
+        fixedLogo.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            ocultarLogo();
+        }, { passive: false });
+
+        fixedLogo.addEventListener('click', ocultarLogo);
+        // ✅✅✅ FIN LOGO
+    </script>
 </body>
 </html>
