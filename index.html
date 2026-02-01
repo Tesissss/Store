@@ -134,11 +134,37 @@
 
         /* =======================================================
            ✅ NUEVO: WATERMARK EN HEADER (NO BORRA NADA)
+           ✅ + EFECTO OLAS (SOLO LA IMAGEN DE MARCA DE AGUA)
            ======================================================= */
         header {
             position: relative;
             overflow: hidden;
         }
+
+        /* ✅ NUEVO: animación olas */
+        @keyframes watermarkWaves {
+            0% {
+                background-position: 50% 55%;
+                transform: translateY(0px) scale(1);
+            }
+            25% {
+                background-position: 49% 56%;
+                transform: translateY(-1px) scale(1.01);
+            }
+            50% {
+                background-position: 51% 54%;
+                transform: translateY(0px) scale(1.02);
+            }
+            75% {
+                background-position: 50% 56%;
+                transform: translateY(1px) scale(1.01);
+            }
+            100% {
+                background-position: 50% 55%;
+                transform: translateY(0px) scale(1);
+            }
+        }
+
         header::before {
             content: "";
             position: absolute;
@@ -150,7 +176,15 @@
             opacity: 0.22;               /* ✅ intensidad */
             pointer-events: none;
             z-index: 0;
+
+            /* ✅ NUEVO: olas */
+            animation: watermarkWaves 5s ease-in-out infinite;
+            will-change: transform, background-position;
+
+            /* ✅ opcional: glow suave (si no lo quieres, lo quito) */
+            filter: drop-shadow(0 0 10px rgba(0,255,153,0.25));
         }
+
         header .container {
             position: relative;
             z-index: 2;
