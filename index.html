@@ -112,17 +112,16 @@
         }
 
         .terminal-text {
-    fill: none;
-    stroke: #00ff99;
-    stroke-width: 1.9;   /* ⬆️ un poco más grueso */
-    font-family: "Courier New", monospace;
-    font-size: 26px;     /* ⬆️ un poco más grande */
-    letter-spacing: 2px;
-    stroke-dasharray: 520;
-    stroke-dashoffset: 520;
-    animation: terminalDraw 6s linear infinite, terminalGlow 2s ease-in-out infinite;
-}
-        
+            fill: none;
+            stroke: #00ff99;
+            stroke-width: 1.9;   /* ⬆️ un poco más grueso */
+            font-family: "Courier New", monospace;
+            font-size: 26px;     /* ⬆️ un poco más grande */
+            letter-spacing: 2px;
+            stroke-dasharray: 520;
+            stroke-dashoffset: 520;
+            animation: terminalDraw 6s linear infinite, terminalGlow 2s ease-in-out infinite;
+        }
 
         @keyframes terminalDraw {
             to { stroke-dashoffset: 0; }
@@ -131,6 +130,30 @@
         @keyframes terminalGlow {
             0%,100% { opacity: .6; filter: drop-shadow(0 0 2px #00ff99); }
             50% { opacity: 1; filter: drop-shadow(0 0 8px #00ff99); }
+        }
+
+        /* =======================================================
+           ✅ NUEVO: WATERMARK EN HEADER (NO BORRA NADA)
+           ======================================================= */
+        header {
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("https://files.catbox.moe/4hdf9m.jpg");
+            background-repeat: no-repeat;
+            background-position: center 55%;
+            background-size: 420px auto; /* ✅ tamaño (más grande) */
+            opacity: 0.22;               /* ✅ intensidad */
+            pointer-events: none;
+            z-index: 0;
+        }
+        header .container {
+            position: relative;
+            z-index: 2;
         }
     </style>
 </head>
