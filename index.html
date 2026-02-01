@@ -344,29 +344,6 @@ Copyright © 2026 Carlos-Interative-2take1 All rights reserved
         });
         // Touch directamente sobre carrusel
         carousel.addEventListener('touchstart', () => vibrar(100));
-
-        /* ✅✅✅ AGREGADO: VIBRACIÓN REAL AL ARRASTRAR (DRAG) EL CARRUSEL EN ANDROID */
-        let isDragging = false;
-        let lastVibe = 0;
-
-        carousel.addEventListener('touchstart', () => { 
-            isDragging = true; 
-        }, { passive: true });
-
-        window.addEventListener('touchend', () => { 
-            isDragging = false; 
-        });
-
-        carousel.addEventListener('touchmove', () => {
-            if (!isDragging) return;
-            const now = Date.now();
-            if (now - lastVibe > 120) {  // cooldown para no vibrar demasiado
-                vibrar(35);
-                lastVibe = now;
-            }
-        }, { passive: true });
-        /* ✅✅✅ FIN AGREGADO */
-
         // 🔹 LOGO FIJO ABAJO - DESAPARECE AL CLIC Y VUELVE DESPUÉS DE 15 SEGUNDOS
         const fixedLogo = document.getElementById('fixedLogo');
         fixedLogo.addEventListener('click', () => {
@@ -383,4 +360,4 @@ Copyright © 2026 Carlos-Interative-2take1 All rights reserved
         });
     </script>
 </body>
-</html> 
+</html>
