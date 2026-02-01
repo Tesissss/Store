@@ -327,60 +327,93 @@ Copyright © 2026 Carlos-Interative-2take1 All rights reserved
         function vibrar(ms = 100) {
             if (navigator.vibrate) navigator.vibrate(ms);
         }
+
         // Botones de compra
         const comprarBtns = document.querySelectorAll('.buy-btn');
         comprarBtns.forEach(btn => {
             btn.addEventListener('click', () => vibrar(150));
             btn.addEventListener('touchstart', () => vibrar(150));
         });
+
         // Carrusel: solo vibración real, visual eliminada
         const carousel = document.getElementById('carouselWrapper');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
-        [prevBtn, nextBtn].forEach(btn => {
+
+        /* ✅✅✅ ARREGLADO: NO SE ROMPE SI prevBtn/nextBtn SON null */
+        [prevBtn, nextBtn].filter(Boolean).forEach(btn => {
             const vibrarCarrusel = () => vibrar(100);
             btn.addEventListener('click', vibrarCarrusel);
             btn.addEventListener('touchstart', vibrarCarrusel);
         });
+
         // Touch directamente sobre carrusel
-        carousel.addEventListener('touchstart', () => vibrar(100));
+        if (carousel) {
+            carousel.addEventListener('touchstart', () => vibrar(100));
+        }
 
         /* ✅✅✅ AGREGADO: VIBRACIÓN REAL AL ARRASTRAR (DRAG) EL CARRUSEL EN ANDROID */
         let isDragging = false;
         let lastVibe = 0;
 
-        carousel.addEventListener('touchstart', () => { 
-            isDragging = true; 
-        }, { passive: true });
+        if (carousel) {
+            carousel.addEventListener('touchstart', () => { 
+                isDragging = true; 
+            }, { passive: true });
 
-        window.addEventListener('touchend', () => { 
-            isDragging = false; 
-        });
+            window.addEventListener('touchend', () => { 
+                isDragging = false; 
+            });
 
-        carousel.addEventListener('touchmove', () => {
-            if (!isDragging) return;
-            const now = Date.now();
-            if (now - lastVibe > 120) {  // cooldown para no vibrar demasiado
-                vibrar(35);
-                lastVibe = now;
-            }
-        }, { passive: true });
+            carousel.addEventListener('touchmove', () => {
+                if (!isDragging) return;
+                const now = Date.now();
+                if (now - lastVibe > 120) {  // cooldown para no vibrar demasiado
+                    vibrar(35);
+                    lastVibe = now;
+                }
+            }, { passive: true });
+        }
         /* ✅✅✅ FIN AGREGADO */
 
         // 🔹 LOGO FIJO ABAJO - DESAPARECE AL CLIC Y VUELVE DESPUÉS DE 15 SEGUNDOS
         const fixedLogo = document.getElementById('fixedLogo');
-        fixedLogo.addEventListener('click', () => {
+
+        /* ✅✅✅ AGREGADO: FUNCIÓN ÚNICA PARA EVITAR DOBLE EVENTO (touch + click) */
+        let logoLock = false;
+        function ocultarLogoConVibracion() {
+            if (!fixedLogo) return;
+            if (logoLock) return;
+            logoLock = true;
+
+            // vibración real
+            vibrar(120);
+
+            // ocultar
             fixedLogo.style.display = 'none';
-            setTimeout(() => {
-                fixedLogo.style.display = 'block';
-            }, 15000); // 15000 ms = 15 segundos
-        });
-        fixedLogo.addEventListener('touchstart', () => {
-            fixedLogo.style.display = 'none';
+
+            // volver
             setTimeout(() => {
                 fixedLogo.style.display = 'block';
             }, 15000);
-        });
+
+            // liberar lock (por si Android dispara click luego del touch)
+            setTimeout(() => {
+                logoLock = false;
+            }, 350);
+        }
+        /* ✅✅✅ FIN AGREGADO */
+
+        if (fixedLogo) {
+            fixedLogo.addEventListener('click', () => {
+                ocultarLogoConVibracion();
+            });
+            fixedLogo.addEventListener('touchstart', (e) => {
+                // evita el click fantasma después del touch
+                e.preventDefault();
+                ocultarLogoConVibracion();
+            }, { passive: false });
+        }
     </script>
 </body>
 </html>
