@@ -645,3 +645,78 @@ footer {
         display: none;
     }
 }
+/* 🌌 ESTRELLAS ESTILO GATO ELÉCTRICO */
+.star {
+  background: radial-gradient(
+    circle at center,
+    #ffffff 0%,
+    #00ffff 20%,
+    #7a00ff 40%,
+    #ff00ff 60%,
+    #00ff99 75%,
+    transparent 85%
+  );
+
+  box-shadow:
+    0 0 6px #00ffff,
+    0 0 12px #7a00ff,
+    0 0 20px #ff00ff,
+    0 0 30px #00ff99;
+
+  border-radius: 50%;
+
+  animation:
+    starPulse 3s ease-in-out infinite,
+    starDrift var(--dur, 7s) ease-in-out infinite;
+
+  will-change: transform, opacity;
+}
+
+/* ✨ Pulso eléctrico tipo plasma */
+@keyframes starPulse {
+  0% {
+    opacity: 0.4;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    filter: hue-rotate(40deg);
+  }
+  100% {
+    opacity: 0.4;
+    filter: hue-rotate(0deg);
+  }
+}
+
+/* 🌌 Movimiento suave tipo energía */
+@keyframes starDrift {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(
+      var(--dx, 6px),
+      var(--dy, -8px)
+    );
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* 🌠 ESTRELLAS FUGACES ESTILO GATO */
+.shooting-star {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #00ffff,
+    #ff00ff,
+    #00ff99,
+    transparent
+  );
+
+  box-shadow:
+    0 0 10px #00ffff,
+    0 0 20px #ff00ff,
+    0 0 30px #00ff99;
+}
