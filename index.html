@@ -369,6 +369,19 @@ Copyright © 2026 Carlos-Interative-2take1 All rights reserved
 
         // 🔹 LOGO FIJO ABAJO - DESAPARECE AL CLIC Y VUELVE DESPUÉS DE 15 SEGUNDOS
         const fixedLogo = document.getElementById('fixedLogo');
+
+        /* ✅✅✅ AGREGADO: VIBRACIÓN REAL EN ANDROID AL TOCAR EL LOGO (ANTES DE OCULTAR) */
+        fixedLogo.addEventListener('pointerdown', () => {
+            if (navigator.vibrate) navigator.vibrate([80, 40, 80]);
+            setTimeout(() => {
+                fixedLogo.style.display = 'none';
+                setTimeout(() => {
+                    fixedLogo.style.display = 'block';
+                }, 15000);
+            }, 30);
+        });
+        /* ✅✅✅ FIN AGREGADO */
+
         fixedLogo.addEventListener('click', () => {
             fixedLogo.style.display = 'none';
             setTimeout(() => {
