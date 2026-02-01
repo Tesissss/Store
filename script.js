@@ -393,15 +393,9 @@ function startHideTimer() {
     }, 4000);
 }
 
-/* ===========================
-   ⭐ ESTRELLAS: MEJORAS AQUÍ
-   =========================== */
 function initStars() {
     const starsContainer = document.getElementById('stars-container');
     const starCount = 200;
-
-    // 🎨 Colores neón tipo el gato
-    const neonColors = ['#00ffff', '#00ff99', '#ff00ff', '#7a00ff', '#00aaff'];
     
     for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
@@ -418,15 +412,6 @@ function initStars() {
         star.style.left = `${Math.random() * 100}%`;
         star.style.top = `${Math.random() * 100}%`;
         star.style.animationDelay = `${Math.random() * 5}s`;
-
-        // ✅ Color aleatorio (se usa en CSS con var(--star-color))
-        const c = neonColors[Math.floor(Math.random() * neonColors.length)];
-        star.style.setProperty('--star-color', c);
-
-        // ✅ Movimiento extra suave (un poquito más)
-        star.style.setProperty('--dx', `${(Math.random() * 14 - 7).toFixed(1)}px`); // -7..7
-        star.style.setProperty('--dy', `${(Math.random() * 18 - 9).toFixed(1)}px`); // -9..9
-        star.style.setProperty('--dur', `${(4 + Math.random() * 6).toFixed(2)}s`);  // 4..10s
         
         starsContainer.appendChild(star);
     }
@@ -443,11 +428,6 @@ function startShootingStars() {
 function createShootingStar() {
     const shootingStar = document.createElement('div');
     shootingStar.classList.add('shooting-star');
-
-    // 🎨 Color neón para la estrella fugaz
-    const neonColors = ['#00ffff', '#00ff99', '#ff00ff', '#7a00ff', '#00aaff'];
-    const c = neonColors[Math.floor(Math.random() * neonColors.length)];
-    shootingStar.style.setProperty('--shoot-color', c);
     
     const startX = Math.random() * 100;
     const startY = Math.random() * 30;
