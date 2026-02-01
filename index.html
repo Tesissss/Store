@@ -56,23 +56,21 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
-
-        /* ---------------- LOGO ABAJO (YA NO ES FIJO) ---------------- */
+        /* ---------------- LOGO FIJO ABAJO ---------------- */
         .fixed-logo {
-            /* position: fixed;  ❌ QUITADO PARA QUE NO SEA FIJO */
-            display: block;
-            margin: 40px auto; /* centrado normal */
+            position: fixed;
+            bottom: 20px; /* distancia desde el pie de la pantalla */
+            left: 50%;
+            transform: translateX(-50%);
             width: 150px; /* tamaño del logo */
             height: auto;
             z-index: 9999;
             animation: floatUpDown 3s ease-in-out infinite;
             filter: drop-shadow(0 0 12px #00ff00); /* neón verde */
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
         }
         @keyframes floatUpDown {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
         }
 
         /* ---------- BORDES PÚRPURA 🍆 PARA CUADROS ---------- */
@@ -300,13 +298,10 @@ Copyright © 2026 Carlos-Interative-2take1 All rights reserved
             </div>
         </div>
     </footer>
-
-    <!-- LOGO ABAJO (YA NO ES FIJO) -->
+    <!-- LOGO FIJO ABAJO -->
     <img src="https://i.imgur.com/3AGErRG.jpeg" alt="Logo" class="fixed-logo" id="fixedLogo">
-
     <!-- TU SCRIPT ORIGINAL -->
     <script src="script.js"></script>
-
     <!-- 🎵 SINCRONIZACIÓN AUDIO -->
     <script>
         const audio = document.getElementById("audioPlayer");
@@ -327,77 +322,65 @@ Copyright © 2026 Carlos-Interative-2take1 All rights reserved
             });
         }
     </script>
-
     <!-- 🔹 VIBRACIÓN CLICK + TOUCH (SIN VIBRACIÓN VISUAL) -->
     <script>
         function vibrar(ms = 100) {
             if (navigator.vibrate) navigator.vibrate(ms);
         }
-
         // Botones de compra
         const comprarBtns = document.querySelectorAll('.buy-btn');
         comprarBtns.forEach(btn => {
             btn.addEventListener('click', () => vibrar(150));
             btn.addEventListener('touchstart', () => vibrar(150));
         });
-
-        // Carrusel: vibración real
+        // Carrusel: solo vibración real, visual eliminada
         const carousel = document.getElementById('carouselWrapper');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
-
         [prevBtn, nextBtn].forEach(btn => {
             const vibrarCarrusel = () => vibrar(100);
             btn.addEventListener('click', vibrarCarrusel);
             btn.addEventListener('touchstart', vibrarCarrusel);
         });
-
         // Touch directamente sobre carrusel
         carousel.addEventListener('touchstart', () => vibrar(100));
 
-        // ✅✅✅ VIBRACIÓN REAL AL ARRASTRAR (DRAG) EL CARRUSEL EN ANDROID
+        /* ✅✅✅ AGREGADO: VIBRACIÓN REAL AL ARRASTRAR (DRAG) EL CARRUSEL EN ANDROID */
         let isDragging = false;
         let lastVibe = 0;
 
-        carousel.addEventListener('touchstart', () => {
-            isDragging = true;
+        carousel.addEventListener('touchstart', () => { 
+            isDragging = true; 
         }, { passive: true });
 
-        window.addEventListener('touchend', () => {
-            isDragging = false;
+        window.addEventListener('touchend', () => { 
+            isDragging = false; 
         });
 
         carousel.addEventListener('touchmove', () => {
             if (!isDragging) return;
             const now = Date.now();
-            if (now - lastVibe > 120) { // cooldown
+            if (now - lastVibe > 120) {  // cooldown para no vibrar demasiado
                 vibrar(35);
                 lastVibe = now;
             }
         }, { passive: true });
-        // ✅✅✅ FIN DRAG VIBE
+        /* ✅✅✅ FIN AGREGADO */
 
-        // ✅✅✅ LOGO ABAJO: VIBRA + DESAPARECE + VUELVE EN 15s (ANDROID OK)
+        // 🔹 LOGO FIJO ABAJO - DESAPARECE AL CLIC Y VUELVE DESPUÉS DE 15 SEGUNDOS
         const fixedLogo = document.getElementById('fixedLogo');
-        let logoTimeout = null;
-
-        function ocultarLogo() {
-            vibrar(120);
+        fixedLogo.addEventListener('click', () => {
             fixedLogo.style.display = 'none';
-
-            clearTimeout(logoTimeout);
-            logoTimeout = setTimeout(() => {
+            setTimeout(() => {
+                fixedLogo.style.display = 'block';
+            }, 15000); // 15000 ms = 15 segundos
+        });
+        fixedLogo.addEventListener('touchstart', () => {
+            fixedLogo.style.display = 'none';
+            setTimeout(() => {
                 fixedLogo.style.display = 'block';
             }, 15000);
-        }
-
-        fixedLogo.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            ocultarLogo();
-        }, { passive: false });
-
-        fixedLogo.addEventListener('click', ocultarLogo);
-        // ✅✅✅ FIN LOGO
+        });
     </script>
 </body>
 </html>
