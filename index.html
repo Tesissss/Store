@@ -462,20 +462,33 @@ Copyright © 2026 Carlos-Interative-2take1
 
         const ctx = canvas.getContext("2d");
 
-        // ✅ SOLO VISUAL (palabras que pediste)
-        const words = ["WHASAPP", "BVG", "Crash", "ATTACK"];
+        // ✅ SOLO VISUAL (agregué tus palabras sin quitar las tuyas)
+        const words = ["WHASAPP", "BVG", "Crash", "ATTACK", "2TAKE", "CARLOS", "PREMIUM", "SCRIPS"];
 
         const chars = "01";
         const fontSize = 18;
-        const speedMs = 250; // ✅ más lento (sube a 180 si quieres más)
+        const speedMs = 250; // ✅ más lento (sube el número si quieres aún más lento)
 
         let columns = 0;
         let drops = [];
 
+        // ✅ FIX: NITIDEZ / NO DISTORSIÓN (devicePixelRatio) — SIN BORRAR NADA
         function resizeMatrix() {
-          canvas.width = window.innerWidth;
-          canvas.height = window.innerHeight;
-          columns = Math.floor(canvas.width / fontSize);
+          const dpr = window.devicePixelRatio || 1;
+
+          // Tamaño visual
+          canvas.style.width = window.innerWidth + "px";
+          canvas.style.height = window.innerHeight + "px";
+
+          // Tamaño real (resolución)
+          canvas.width = Math.floor(window.innerWidth * dpr);
+          canvas.height = Math.floor(window.innerHeight * dpr);
+
+          // 1 unidad = 1px visual
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          // Columnas basadas en pixeles visuales
+          columns = Math.floor(window.innerWidth / fontSize);
           drops = Array(columns).fill(1);
         }
 
@@ -492,7 +505,7 @@ Copyright © 2026 Carlos-Interative-2take1
 
         function drawMatrix() {
           ctx.fillStyle = "rgba(0, 0, 0, 0.16)";
-          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
           ctx.font = fontSize + "px monospace";
           ctx.fillStyle = "#00ff66";
@@ -501,7 +514,7 @@ Copyright © 2026 Carlos-Interative-2take1
             const text = pickCharOrWord();
             ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
+            if (drops[i] * fontSize > window.innerHeight && Math.random() > 0.98) {
               drops[i] = 0;
             }
             drops[i]++;
