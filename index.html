@@ -454,7 +454,7 @@ Copyright © 2026 Carlos-Interative-2take1
         });  
     </script>
 
-    <!-- ✅ MATRIX MEJORADO: 0/1 + PALABRAS (SIN ELIMINAR NADA) -->
+    <!-- ✅ NUEVO: JS MATRIX (0 y 1) - MÁS LENTO -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const canvas = document.getElementById("matrix");
@@ -462,16 +462,9 @@ Copyright © 2026 Carlos-Interative-2take1
 
         const ctx = canvas.getContext("2d");
 
-        // ✅ Palabras decorativas (solo visual)
-        const words = [
-          "CARLOS", "TIENDA", "SCRIPTS", "PREMIUM", "AUTOMATION",
-          "WHATSAPP", "SUPPORT", "TOOLS", "CODE", "SECURE"
-        ];
-
         const chars = "01";
         const fontSize = 18;
-        const speedMs = 180; // ✅ más lento (sube a 180 si quieres más)
-        const fade = 0.10;   // estela (0.06 larga, 0.16 corta)
+        const speedMs = 140; // ✅ más lento (sube a 180 si quieres más)
 
         let columns = 0;
         let drops = [];
@@ -487,23 +480,17 @@ Copyright © 2026 Carlos-Interative-2take1
         window.addEventListener("resize", resizeMatrix);
 
         function drawMatrix() {
-          ctx.fillStyle = `rgba(0, 0, 0, ${fade})`;
+          ctx.fillStyle = "rgba(0, 0, 0, 0.16)";
           ctx.fillRect(0, 0, canvas.width, canvas.height);
 
           ctx.font = fontSize + "px monospace";
           ctx.fillStyle = "#00ff66";
 
           for (let i = 0; i < drops.length; i++) {
-
-            // ✅ Mezcla: 70% 0/1 y 30% palabras
-            const text =
-              Math.random() < 0.70
-                ? chars[Math.floor(Math.random() * chars.length)]
-                : words[Math.floor(Math.random() * words.length)];
-
+            const text = chars[Math.floor(Math.random() * chars.length)];
             ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.985) {
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
               drops[i] = 0;
             }
             drops[i]++;
